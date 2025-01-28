@@ -9,7 +9,7 @@ export default function Products({ products }: { products: Product[] }) {
         <Link
           key={product.id}
           href={"/products/" + product.id}
-          className="bg-none p-2 rounded-lg product-box w-48 md:w-52 lg:w-56 hover:scale-105 duration 300"
+          className="bg-none p-2 rounded-lg product-box w-48 md:w-52 lg:w-56 hover:scale-105"
         >
           <div className="flex justify-center mb-2 h-36 w-full relative">
             <Image
