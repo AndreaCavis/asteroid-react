@@ -25,6 +25,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.underlined {
+  display: inline-block;
+  padding-bottom:2px;
+  background-image: linear-gradient(#000 0 0);
+  background-position: 0 100%; /*OR bottom left*/
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s,
+    background-position 0s 0.3s; /*change after the size immediately*/
+}
+
+.underlined:hover {
+  background-position: 100% 100%; /*OR bottom right*/
+  background-size: 100% 2px;
+}
+
 
 .product-box {
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
