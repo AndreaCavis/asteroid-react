@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function Products({ products }: { products: Product[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="m-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       {products.map((product) => (
         <Link
           key={product.id}
           href={"/products/" + product.id}
-          className="bg-none p-2 rounded-lg product-box w-48 md:w-52 lg:w-56"
+          className="bg-none p-2 rounded-lg product-box w-48 md:w-52 lg:w-56 hover:scale-105 duration 300"
         >
           <div className="flex justify-center mb-2 h-36 w-full relative">
             <Image
