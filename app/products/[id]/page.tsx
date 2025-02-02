@@ -1,7 +1,6 @@
-import ProductsList from "../../products";
 import { products } from "../../product-data";
-import Image from "next/image";
 import NotFoundPage from "@/app/not-found";
+// import { useRouter } from "next/navigation"; // use-client only
 
 // REMEMBER: Modify this if you remove the ID
 export default function ProductDetailsPage({ params }: { params: { id: string } }) {
@@ -27,6 +26,9 @@ export default function ProductDetailsPage({ params }: { params: { id: string } 
         <h3 className="text-3xl font-semibold mb-4">Suggested Use</h3>
         <p className="text-2xl text-white">{product.suggested_use}</p>
       </div>
+      {/* <h1 onClick={useRouter().back} className=" m-4 text-xl underlined">
+        Go back
+      </h1> */}
     </div>
   );
 }
