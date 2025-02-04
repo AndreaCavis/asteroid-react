@@ -22,7 +22,7 @@ export async function connectToDB() {
   await client.connect();
 
   cachedClient = client;
-  cachedDb = client.db('asteroid-DB');
+  cachedDb = client.db();
 
-  return { client, db: client.db('asteroid-DB') }
+  return { client, db: client.db() }
 }
