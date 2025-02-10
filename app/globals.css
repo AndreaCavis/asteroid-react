@@ -14,9 +14,10 @@
   }
 }
 
+
 ::selection {
   background-color: rgba(234, 54, 128, 0.5); /* Semi-transparent pink */
-  color: whitesmoke;
+  color: lightskyblue;
 }
 
 body {
