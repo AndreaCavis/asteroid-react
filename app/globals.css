@@ -41,6 +41,7 @@ body {
 
 /* Transition of underline left-to right */
 .underlined:hover {
+  color: #EA3680;
   background-position: 100% 100%; /*OR bottom right*/
   background-size: 100% 4px;
 }
