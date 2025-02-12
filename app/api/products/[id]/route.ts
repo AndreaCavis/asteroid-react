@@ -11,7 +11,6 @@ export async function GET(request: NextRequest, { params }: { params: Params}) {
     const productID = params.id;
 
     try {
-
         const product = await db.collection("products").findOne({ id: productID });
 
         if (!product) {
@@ -27,12 +26,10 @@ export async function GET(request: NextRequest, { params }: { params: Params}) {
             }
         })
     }
-    catch (error)
-     {
+    catch (error) {
         console.error('Error fetching product from DB:', error);
         return new Response("Internal Server Error", {
             status: 500,
         });
-
     }
 }
