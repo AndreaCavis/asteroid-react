@@ -1,8 +1,8 @@
 import Product from "./products";
-import { products } from "./product-data";
-import Products from "./products";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch("http://localhost:3000/api/products");
+  const products = await response.json();
   return (
     <>
       <h1>Welcome to Asteroid</h1>
