@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NotFoundPage() {
   return (
     <div className="container mx-auto p-4 flex flex-col items-center h-screen">
-      <h1 className="text-8xl font-bold mb-6">404</h1>
+      <h1 className="text-8xl font-bold mb-6 hover:scale-110 duration-300 ease-in">404</h1>
       <h2 className="text-4xl text-white font-normal mb-4">
         Sorry, an asteroid destroyed this page. It can't be found anymore.
       </h2>

@@ -10,7 +10,6 @@ export default function Navbar() {
           alt={"Asteroid logo"}
           width={334}
           height={100}
-          // className="pb-2 pl-2 pr-5 home-logo"
           className="w-1/6 h-auto p-2 duration-500 hover:scale-105"
         />
       </Link>
