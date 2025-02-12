@@ -10,6 +10,7 @@ export default async function ProductDetailsPage({ params }: { params: { id: str
   if (response.status === 404) {
     return <NotFoundPage />;
   }
+
   const product = await response.json();
 
   return (
