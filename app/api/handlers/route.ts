@@ -1,5 +1,5 @@
 export async function GET() {
-    return new Response("Hello", {
+    return new Response(JSON.stringify({ message: "Hello from handlers" }), {
         status: 200,
     });
 }
