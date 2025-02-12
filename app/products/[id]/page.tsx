@@ -5,13 +5,12 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 // REMEMBER: Modify this if you remove the ID
 export default async function ProductDetailsPage({ params }: { params: { id: string } }) {
-  const response = await fetch("http://localhost:3000/api/products");
-  const products = await response.json();
-  const product = products.find((p) => p.id === params.id);
+  const response = await fetch("http://localhost:3000/api/products/" + params.id);
 
-  if (!product) {
+  if (response.status === 404) {
     return <NotFoundPage />;
   }
+  const product = await response.json();
 
   return (
     <>
