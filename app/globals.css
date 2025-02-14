@@ -27,7 +27,7 @@ body {
 }
 
 
-/* underline setup for transition */
+/* Transition line left-to-right */
 .underlined {
   display: inline-block;
   padding-bottom: 10px;
@@ -38,12 +38,11 @@ body {
   transition:
     background-size 0.3s,
     background-position 0s 0.3s; /*change after the size immediately*/
-}
-/* Transition of underline left-to right */
-.underlined:hover {
-  color: #EA3680;
-  background-position: 100% 100%; /*OR bottom right*/
-  background-size: 100% 4px;
+  &:hover {
+    color: #EA3680;
+    background-position: 100% 100%; /*OR bottom right*/
+    background-size: 100% 4px;
+  }
 }
 
 
@@ -52,12 +51,12 @@ body {
   transition: transform 300ms ease; /* Apply transition to transform (scale) */ 
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   --tw-ring-color: #EA3680; 
-}
-.product-box:hover{
-  transition-duration: 300ms;
-  box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
-              0 0 6px 6px rgba(234, 54, 128, 1);
-  --tw-ring-color: #EA3680;  /* Define the ring color */ 
+  &:hover {
+    transition-duration: 300ms;
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
+                0 0 6px 6px rgba(234, 54, 128, 1);
+    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+  }
 }
 
 
@@ -65,15 +64,14 @@ body {
 .pink-shadow {
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
               0 0 12px 12px rgba(234, 54, 128, 0.7);
-  --tw-ring-color: #EA3680;  
+  --tw-ring-color: #EA3680;
+  &:hover {
+    transition-duration: 300ms;
+    box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
+                0 0 12px 12px rgba(234, 54, 128, 1);
+    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+  }  
 }
-.pink-shadow:hover{
-  transition-duration: 300ms;
-  box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
-              0 0 12px 12px rgba(234, 54, 128, 1);
-  --tw-ring-color: #EA3680;  /* Define the ring color */ 
-}
-
 
 
 /* COLOUR SCHEMES */
