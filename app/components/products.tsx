@@ -1,4 +1,4 @@
-import { Product } from "./product-data";
+import { Product } from "../product-data";
 import Image from "next/image";
 import Link from "next/link";
 

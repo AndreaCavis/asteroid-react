@@ -1,4 +1,4 @@
-import Product from "./products";
+import Product from "./components/products";
 
 export default async function Home() {
   const response = await fetch("http://localhost:3000/api/products");

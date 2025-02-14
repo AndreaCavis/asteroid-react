@@ -25,8 +25,8 @@ export async function connectToDB() {
   console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
   cachedClient = client;
-  cachedDb = client.db();
+  cachedDb = client.db("asteroid-DB");
 
-  return { client, db: client.db() }
+  return { client, db: client.db("asteroid-DB") }
 }
 
