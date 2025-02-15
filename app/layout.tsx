@@ -17,7 +17,7 @@ export default function RootLayout({
       <body>
         <title>Asteroid</title>
         <Navbar />
-        {children}
+        <div className="pt-28">{children}</div>
       </body>
     </html>
   );
