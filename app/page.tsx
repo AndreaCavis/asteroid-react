@@ -1,4 +1,4 @@
-import Product from "./components/products";
+import ProductsList from "./components/productsList";
 import Searchbar from "./components/searchbar";
 
 export default async function Home() {
@@ -8,7 +8,7 @@ export default async function Home() {
     <>
       <h1 className="text-white text-4xl text-center">Welcome to Asteroid!</h1>
       <Searchbar />
-      <Product products={products} />
+      <ProductsList products={products} />
     </>
   );
 }

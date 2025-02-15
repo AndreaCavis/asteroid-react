@@ -2,7 +2,7 @@ import { Product } from "../product-data";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Products({ products }: { products: Product[] }) {
+export default function ProductsList({ products }: { products: Product[] }) {
   return (
     <div className="m-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
       {products.map((product) => (
