@@ -6,7 +6,7 @@ export default async function Home() {
   const products = await response.json();
   return (
     <>
-      <h1 className="text-white text-4xl p-2 text-center">Welcome to Asteroid</h1>
+      <h1 className="text-white text-4xl text-center">Welcome to Asteroid!</h1>
       <Searchbar />
       <Product products={products} />
     </>

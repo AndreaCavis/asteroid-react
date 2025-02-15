@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="pink-shadow sticky mb-6">
+    <nav className="pink-shadow mb-6">
       <Link href={"/"}>
         <img
           src={"/asteroid-pink.png"}

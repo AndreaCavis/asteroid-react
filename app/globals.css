@@ -20,13 +20,13 @@
   color: white;
 }
 
+input {
+  caret-color: lightskyblue;
+}
+
 ::placeholder {
   color: #757575 !important;
   opacity: 1 !important;
-}
-
-::selection {
-  color: #EA3680;
 }
 
 body {
@@ -87,13 +87,12 @@ body {
 .search-shadow {
   box-shadow: 0 0 6px 6px rgba(234, 54, 128, 0.5);
   --tw-ring-color: #EA3680;
+  transition: all 300ms ease;  /*transistion used in parent class works like this for all the children*/ 
   &:hover {
-    transition-duration: 300ms;
     box-shadow: 0 0 6px 6px rgba(234, 54, 128, 0.8);
     --tw-ring-color: #EA3680;  /* Define the ring color */ 
   }
   &:focus {
-    transition-duration: 300ms;
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
                 0 0 6px 6px rgba(234, 54, 128, 0.8);
     --tw-ring-color: #EA3680;  /* Define the ring color */ 
