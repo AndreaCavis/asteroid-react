@@ -60,9 +60,9 @@ export default function Searchbar() {
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
-            <div className="absolute z-50 top-24 pl-4 box-shadow bg-[#0a0a0a] text-white w-full flex flex-col gap-2">
+            <div className="absolute z-50 top-24 box-shadow bg-[#0a0a0a] text-white w-full flex flex-col gap-2">
               {activeSearch.map((item) => (
-                <span key={item.id} className="hover:bg-stone-900">
+                <span key={item.id} className="hover:bg-stone-900 pl-4">
                   {" "}
                   {highlightMatch(item.name, searchValue)}{" "}
                 </span>
