@@ -1,5 +1,4 @@
 "use client";
-
 import { IoSearch } from "react-icons/io5";
 import { Product, products } from "../product-data";
 import { useRef, useState } from "react";
@@ -9,12 +8,9 @@ import { useDebouncedCallback } from "use-debounce";
 // Function to highlight letters typed in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
   if (!query) return text;
-
   // Safely escape any regex special characters in the query:
   const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  // Build a case-insensitive RegExp capturing the query
-  const regex = new RegExp(`(${escapedQuery})`, "gi");
-
+  const regex = new RegExp(`(${escapedQuery})`, "gi"); // gi stand for case insensitive
   // Split the text around the matched parts
   const parts = text.split(regex);
 
@@ -30,20 +26,13 @@ function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
-// Handle search submit function ----------------------------------------------------------------------
-async function handleSearchSubmit(query: string) {
-  const response = await fetch("http://localhost:3000/api/query/" + query);
-  const products = await response.json();
-  console.log(products);
-} // -------------------------------------------------------------------------------------------------
-
 export default function Searchbar() {
   const [searchValue, setSearchValue] = useState("");
   const [activeSearch, setActiveSearch] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const router = useRouter();
 
   // Call this before handle search to prevent conflict with debounce callback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +47,7 @@ export default function Searchbar() {
     setSearchValue(e.target.value);
 
     e.target.value ? params.set("query", e.target.value) : params.delete("query"); // Set the query parameter to the search text
-    replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
+    router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
 
     if (!e.target.value) {
       setActiveSearch([]);
@@ -80,11 +69,19 @@ export default function Searchbar() {
     // Update the query in the URL with the clicked product name
     const params = new URLSearchParams(searchParams);
     params.set("query", productName);
-    replace(`${pathname}?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`);
 
     if (inputRef.current) {
       inputRef.current.focus(); // Keeps focus on searchbar
     }
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchValue.trim()) return;
+
+    // Navigate to the results page
+    router.push(`/search/${encodeURIComponent(searchValue)}`);
   };
 
   return (
@@ -102,7 +99,7 @@ export default function Searchbar() {
           />
           <button
             className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
-            onClick={() => handleSearchSubmit(searchValue)}
+            onClick={(e) => handleSearchSubmit(e)}
           >
             <IoSearch />
           </button>
