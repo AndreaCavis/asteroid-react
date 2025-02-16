@@ -3,7 +3,9 @@
 import { IoSearch } from "react-icons/io5";
 import { Product, products } from "../product-data";
 import { useRef, useState } from "react";
+import { useSearchParams, useSearchParams } from "next/navigation";
 
+// Function to highlight letters typed in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
   if (!query) return text;
 
@@ -27,13 +29,26 @@ function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
+// Handle search submit function
+async function handleSearchSubmit(query: string) {
+  const response = await fetch("http://localhost:3000/api/query/" + query);
+  const products = await response.json();
+  console.log(products);
+}
+
 export default function Searchbar() {
   const [searchValue, setSearchValue] = useState("");
   const [activeSearch, setActiveSearch] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchParams = useSearchParams();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>, term: string) => {
+    const params = new URLSearchParams(searchParams);
     setSearchValue(e.target.value);
+
+    // reset the query if term is empty
+    term ? params.set("query", term) : params.delete("query");
+
     if (!e.target.value) {
       setActiveSearch([]);
       return;
@@ -67,7 +82,10 @@ export default function Searchbar() {
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleSearch(e)}
           />
-          <button className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full">
+          <button
+            className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
+            onClick={() => handleSearchSubmit(searchValue)}
+          >
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
