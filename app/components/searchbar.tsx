@@ -4,6 +4,7 @@ import { IoSearch } from "react-icons/io5";
 import { Product, products } from "../product-data";
 import { useRef, useState } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 // Function to highlight letters typed in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
@@ -44,11 +45,18 @@ export default function Searchbar() {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Call this before handle search to prevent conflict with debounce callback
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    handleSearch(e);
+  };
+
+  // debounced search function
+  const handleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Searching... ", e.target.value.toString());
     const params = new URLSearchParams(searchParams);
     setSearchValue(e.target.value);
 
-    // reset the query if term is empty
     e.target.value ? params.set("query", e.target.value) : params.delete("query"); // Set the query parameter to the search text
     replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
 
@@ -62,7 +70,7 @@ export default function Searchbar() {
       .filter((product) => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
       .slice(0, 8);
     setActiveSearch(filteredProducts);
-  };
+  }, 300); // 300ms is the debounce time for the handleSearch function
 
   // Function to handle clicking on a suggestion
   const handleSuggestionClick = (productName: string) => {
@@ -89,7 +97,7 @@ export default function Searchbar() {
             ref={inputRef}
             className="w-full my-8 p-3 rounded-full bg-transparent text-white search-shadow"
             value={searchValue || ""} // searchValue || "" so that is always a string
-            onChange={(e) => handleSearch(e)}
+            onChange={(e) => handleChange(e)}
             // defaultValue={searchParams.get("query")?.toString()}  // this would allow to update searchbar input from URL
           />
           <button
