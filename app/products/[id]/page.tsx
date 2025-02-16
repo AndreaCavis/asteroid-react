@@ -18,7 +18,7 @@ export default async function ProductDetailsPage({ params }: { params: { id: str
       <div className="flex">
         <Link
           href="/"
-          className="mt-4 ml-auto mr-4 text-white text-4xl  hover:text-current hover:scale-105 duration-300"
+          className="mt-4 mr-auto ml-12 text-white text-4xl  hover:text-current hover:scale-105 duration-300"
         >
           <FaArrowLeftLong />
         </Link>
