@@ -13,7 +13,6 @@ export async function GET(request: NextRequest, { params }: { params: Params}){
     try {
         const products = await db.collection("products").find({ name: { $regex: new RegExp(productName, "i")}}).toArray();
 
-
         if (!products) {
             return new Response("Product not found", {
                 status: 404,

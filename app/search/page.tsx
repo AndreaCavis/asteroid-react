@@ -1,5 +1,8 @@
+import ProductsList from "../components/productsList"
+import { Product } from "../product-data"
+
 export default function Results(){
     return (
-        <h1>Seach Result</h1>
+        // <ProductsList />
     )
 }
