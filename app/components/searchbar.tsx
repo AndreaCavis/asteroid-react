@@ -3,7 +3,7 @@
 import { IoSearch } from "react-icons/io5";
 import { Product, products } from "../product-data";
 import { useRef, useState } from "react";
-import { useSearchParams, useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 // Function to highlight letters typed in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
@@ -29,25 +29,28 @@ function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
-// Handle search submit function
+// Handle search submit function ----------------------------------------------------------------------
 async function handleSearchSubmit(query: string) {
   const response = await fetch("http://localhost:3000/api/query/" + query);
   const products = await response.json();
   console.log(products);
-}
+} // -------------------------------------------------------------------------------------------------
 
 export default function Searchbar() {
   const [searchValue, setSearchValue] = useState("");
   const [activeSearch, setActiveSearch] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>, term: string) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
     setSearchValue(e.target.value);
 
     // reset the query if term is empty
-    term ? params.set("query", term) : params.delete("query");
+    e.target.value ? params.set("query", e.target.value) : params.delete("query"); // Set the query parameter to the search text
+    replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
 
     if (!e.target.value) {
       setActiveSearch([]);
@@ -65,6 +68,12 @@ export default function Searchbar() {
   const handleSuggestionClick = (productName: string) => {
     setSearchValue(productName); // Set the clicked suggestion in the search input
     setActiveSearch([]); // Clear the suggestions
+
+    // Update the query in the URL with the clicked product name
+    const params = new URLSearchParams(searchParams);
+    params.set("query", productName);
+    replace(`${pathname}?${params.toString()}`);
+
     if (inputRef.current) {
       inputRef.current.focus(); // Keeps focus on searchbar
     }
@@ -81,6 +90,7 @@ export default function Searchbar() {
             className="w-full my-8 p-3 rounded-full bg-transparent text-white search-shadow"
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleSearch(e)}
+            // defaultValue={searchParams.get("query")?.toString()}  // this would allow to update searchbar input from URL
           />
           <button
             className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
