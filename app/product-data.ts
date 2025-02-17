@@ -31,7 +31,7 @@ export interface Product {
   }, {
     id: '456',
     brand: 'Optimum Nutrition',
-    name: 'Impact Whey Protein',
+    name: 'ON Whey Protein',
     imageUrl: 'on_whey.png',
     suggested_use: 'GOLD STANDARD 100% WHEY is best enjoyed first thing in the morning and/or during the 30 minutes just before or immediately after training.\nSimply mix one rounded scoop (31 g )in 180-240 ml of cold water. You can also add a serving to smoothies, protein balls, muffins, porridge or other meals as another great way to get a protein hit in the kitchen.',
     price: 24.55,
@@ -46,7 +46,7 @@ export interface Product {
     id: '678',
     brand: 'Myprotein',
     name: 'Myprotein Beta Alanine',
-    imageUrl: 'myp_beta_alanine.jpg',
+    imageUrl: 'myp_beta_alanine.png',
     suggested_use: 'Mix 21 g (~3 level scoops) in 400 ml of cold water.\nRecommended consumption of 1 serving per day.',
     price: 16.55,
   }, {
@@ -74,7 +74,7 @@ export interface Product {
     id: '002',
     brand: 'Yamamoto Nutrition',
     name: 'Yamamoto Beta Alanine',
-    imageUrl: 'ym_beta_alanine.jpg',
+    imageUrl: 'ym_beta_alanine.png',
     suggested_use: 'Mix 21 g (~3 level scoops) in 400 ml of cold water.\nRecommended consumption of 1 serving per day.',
     price: 16.55,
   }, {

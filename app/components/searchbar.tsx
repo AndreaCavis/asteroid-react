@@ -1,11 +1,11 @@
 "use client";
 import { IoSearch } from "react-icons/io5";
 import { Product, products } from "../product-data";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
-// Function to highlight letters typed in suggestions
+// Function to highlight typed letters in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
   if (!query) return text;
   // Safely escape any regex special characters in the query:
@@ -28,11 +28,34 @@ function highlightMatch(text: string, query: string): React.ReactNode {
 
 export default function Searchbar() {
   const [searchValue, setSearchValue] = useState("");
-  const [activeSearch, setActiveSearch] = useState<Product[]>([]);
+  const [activeSearch, setActiveSearch] = useState<string[]>([]);
+  const [allProductNames, setAllProductNames] = useState<string[]>([]); // Store all product names
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1); // Arrow navigation suggestion menu
   const inputRef = useRef<HTMLInputElement>(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+
+  // API call for productNames for suggestion menu only once on mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/query?search=");
+        const data = await response.json();
+        setAllProductNames(data.map((product: any) => product.name)); // Store names only
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // Ensure selectedIndex is within bounds when activeSearch updates
+  useEffect(() => {
+    if (selectedIndex >= activeSearch.length) {
+      setSelectedIndex(activeSearch.length - 1);
+    }
+  }, [activeSearch]);
 
   // Call this before handle search to prevent conflict with debounce callback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,23 +65,24 @@ export default function Searchbar() {
 
   // debounced search function
   const handleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Searching... ", e.target.value.toString());
     const params = new URLSearchParams(searchParams);
-    setSearchValue(e.target.value);
+    const query = e.target.value;
+    setSearchValue(query);
 
-    e.target.value ? params.set("query", e.target.value) : params.delete("query"); // Set the query parameter to the search text
+    query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
     router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
 
-    if (!e.target.value) {
+    if (!query) {
       setActiveSearch([]);
       return;
     }
 
     // Filter by name and limit results to 8
-    const filteredProducts = products
-      .filter((product) => product.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    const filteredProducts = allProductNames
+      .filter((name) => name.toLowerCase().includes(query.toLowerCase()))
       .slice(0, 8);
     setActiveSearch(filteredProducts);
+    setSelectedIndex(-1); // Reset selection when typing
   }, 300); // 300ms is the debounce time for the handleSearch function
 
   // Function to handle clicking on a suggestion
@@ -76,12 +100,25 @@ export default function Searchbar() {
     }
   };
 
+  // Handle arrow key navigation
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault(); // Prevent page scrolling
+      setSelectedIndex((prevIndex) => (prevIndex < activeSearch.length - 1 ? prevIndex + 1 : prevIndex));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault(); // Prevent page scrolling
+      setSelectedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    } else if (e.key === "Enter" && selectedIndex >= 0) {
+      e.preventDefault();
+      handleSuggestionClick(activeSearch[selectedIndex]);
+    }
+  };
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
-
     // Navigate to the results page
-    router.push(`/search/${encodeURIComponent(searchValue)}`);
+    router.push(`/search/?query=${encodeURIComponent(searchValue)}`);
   };
 
   return (
@@ -95,6 +132,7 @@ export default function Searchbar() {
             className="w-full my-8 p-3 rounded-full bg-transparent text-white search-shadow"
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleChange(e)}
+            onKeyDown={handleKeyDown} // Listen to keydown event
             // defaultValue={searchParams.get("query")?.toString()}  // this would allow to update searchbar input from URL
           />
           <button
@@ -105,13 +143,13 @@ export default function Searchbar() {
           </button>
           {activeSearch.length > 0 && (
             <div className="absolute z-50 top-24 box-shadow bg-[#0a0a0a] rounded-md text-white w-full flex flex-col gap-2">
-              {activeSearch.map((item) => (
+              {activeSearch.map((item, index) => (
                 <span
-                  key={item.id}
-                  className="hover:bg-stone-800 rounded-md pl-4"
-                  onClick={() => handleSuggestionClick(item.name)}
+                  key={index}
+                  className={`hover:bg-stone-800 rounded-md pl-4  ${index === selectedIndex ? "bg-stone-800" : ""}`}
+                  onClick={() => handleSuggestionClick(item)}
                 >
-                  {highlightMatch(item.name, searchValue)}
+                  {highlightMatch(item, searchValue)}
                 </span>
               ))}
             </div>
