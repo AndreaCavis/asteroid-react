@@ -39,7 +39,7 @@ export default async function ProductDetailsPage({ params }: { params: { id: str
           <p className="text-2xl text-white">{product.suggested_use}</p>
         </div>
         {/* <h1 onClick={useRouter().back} className=" m-4 text-xl underlined">
-        Go back
+          Go back
         </h1> */}
       </div>
     </>
