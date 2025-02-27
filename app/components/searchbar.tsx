@@ -1,6 +1,5 @@
 "use client";
 import { IoSearch } from "react-icons/io5";
-import { Product, products } from "../product-data";
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
@@ -118,7 +117,11 @@ export default function Searchbar() {
     e.preventDefault();
     if (!searchValue.trim()) return;
     // Navigate to the results page
-    router.push(`/search/?query=${encodeURIComponent(searchValue)}`);
+    // router.push(`/search/?query=${encodeURIComponent(searchValue)}`);
+
+    const params = new URLSearchParams();
+    params.set("query", searchValue);
+    router.push(`/search/?${params.toString()}`);
   };
 
   return (
