@@ -113,12 +113,12 @@ export default function Searchbar() {
     }
   };
 
+  // Performs the search and goes to the result page
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     // Navigate to the results page
     // router.push(`/search/?query=${encodeURIComponent(searchValue)}`);
-
     const params = new URLSearchParams();
     params.set("query", searchValue);
     router.push(`/search/?${params.toString()}`);
@@ -136,7 +136,6 @@ export default function Searchbar() {
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleChange(e)}
             onKeyDown={handleKeyDown} // Listen to keydown event
-            // defaultValue={searchParams.get("query")?.toString()}  // this would allow to update searchbar input from URL
           />
           <button
             className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
