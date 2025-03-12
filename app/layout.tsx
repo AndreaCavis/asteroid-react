@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./components/navbar";
+import Navbar from "../components/ui/navbar";
+import Sidebar from "../components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Asteroid",
@@ -13,11 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="dark">
+      <body className="dark">
         <title>Asteroid</title>
         <Navbar />
-        <div className="pt-28">{children}</div>
+        <Sidebar />
+        <div className="pt-28 dark">{children}</div>
       </body>
     </html>
   );

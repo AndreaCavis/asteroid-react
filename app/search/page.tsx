@@ -1,7 +1,7 @@
 "use client";
 import NotFoundPage from "@/app/not-found";
-import Searchbar from "@/app/components/searchbar";
-import ProductsList from "@/app/components/productsList";
+import Searchbar from "@/components/ui/searchbar";
+import ProductsList from "@/components/ui/productsList";
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 

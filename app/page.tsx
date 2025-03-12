@@ -1,5 +1,5 @@
-import ProductsList from "./components/productsList";
-import Searchbar from "./components/searchbar";
+import ProductsList from "../components/ui/productsList";
+import Searchbar from "../components/ui/searchbar";
 
 export default async function Home() {
   const response = await fetch("http://localhost:3000/api/products");

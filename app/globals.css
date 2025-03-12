@@ -2,15 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #EA3680;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --background: #FFFFFF;
+    --foreground: #EA3680;
+    --card: #FFFFFF;
+    --card-foreground: #EA3680;
+    --popover: #FFFFFF;
+    --popover-foreground: #EA3680;
+    --primary: #3F1C1B;
+    --primary-foreground: #F2F5C1;
+    --secondary: #F6F7B8;
+    --secondary-foreground: #3F1C1B;
+    --muted: #F6F7B8;
+    --muted-foreground: #9E7C5E;
+    --accent: #F6F7B8;
+    --accent-foreground: #3F1C1B;
+    --destructive: #FF6A00;
+    --destructive-foreground: #F2F5C1;
+    --border: #D9B6A5;
+    --input: #D9B6A5;
+    --ring: #EA3680;
+    --chart-1: #FF5A33;
+    --chart-2: #009E6C;
+    --chart-3: #005A6F;
+    --chart-4: #E6942D;
+    --chart-5: #FF8B32;
+    --radius: 0.5rem;
+  }
+  .dark {
     --background: #0a0a0a;
     --foreground: #EA3680;
+    --card: #0a0a0a;
+    --card-foreground: #EA3680;
+    --popover: #0a0a0a;
+    --popover-foreground: #EA3680;
+    --primary: #EA3680;
+    --primary-foreground: #3F1C1B;
+    --secondary: #5A2B2A;
+    --secondary-foreground: #EA3680;
+    --muted: #5A2B2A;
+    --muted-foreground: #9E7C5E;
+    --accent: #5A2B2A;
+    --accent-foreground: #EA3680;
+    --destructive: #FF6A00;
+    --destructive-foreground: #EA3680;
+    --border: #5A2B2A;
+    --input: #5A2B2A;
+    --ring: #EA3680;
+    --chart-1: #3F9C1D;
+    --chart-2: #A7D8AC;
+    --chart-3: #C4E6FF;
+    --chart-4: #F5C6B3;
+    --chart-5: #F5A2A2;
+  }
+}
+
+
+@layer base.dark {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
@@ -27,12 +81,6 @@ input {
 ::placeholder {
   color: #757575 !important;
   opacity: 1 !important;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Remove the clear button from search */
@@ -54,7 +102,7 @@ input[type="search"]::-webkit-search-cancel-button {
     background-size 0.3s,
     background-position 0s 0.3s; /*change after the size immediately*/
   &:hover {
-    color: #EA3680;
+    color: var(--primary);
     background-position: 100% 100%; /*OR bottom right*/
     background-size: 100% 4px;
   }
@@ -65,12 +113,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .product-box {
   transition: transform 300ms ease; /* Apply transition to transform (scale) */ 
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  --tw-ring-color: #EA3680; 
+  --tw-ring-color: var(--primary); 
   &:hover {
     transition-duration: 300ms;
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
                 0 0 6px 6px rgba(234, 54, 128, 0.8);
-    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+    --tw-ring-color: var(--primary);  /* Define the ring color */ 
   }
 }
 
@@ -79,12 +127,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .pink-shadow {
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
               0 0 12px 12px rgba(234, 54, 128, 0.5);
-  --tw-ring-color: #EA3680;
+  --tw-ring-color: var(--primary);
   &:hover {
     transition-duration: 300ms;
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
                 0 0 12px 12px rgba(234, 54, 128, 0.8);
-    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+    --tw-ring-color: var(--primary);  /* Define the ring color */ 
   }  
 }
 
@@ -92,16 +140,16 @@ input[type="search"]::-webkit-search-cancel-button {
 /* Searchbar shadow */
 .search-shadow {
   box-shadow: 0 0 6px 6px rgba(234, 54, 128, 0.5);
-  --tw-ring-color: #EA3680;
+  --tw-ring-color: var(--primary);
   transition: all 300ms ease;  /*transistion used in parent class works like this for all the children*/ 
   &:hover {
     box-shadow: 0 0 6px 6px rgba(234, 54, 128, 0.8);
-    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+    --tw-ring-color: var(--primary);  /* Define the ring color */ 
   }
   &:focus {
     box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color), 
                 0 0 6px 6px rgba(234, 54, 128, 0.8);
-    --tw-ring-color: #EA3680;  /* Define the ring color */ 
+    --tw-ring-color: var(--primary);  /* Define the ring color */ 
     border: none;
     outline: none;
   
@@ -117,3 +165,4 @@ input[type="search"]::-webkit-search-cancel-button {
 <color name="grey600">#757575</color>
 <color name="pink900">#880e4f</color>
 <color name="lightblue200">#40c4ff</color> */
+
