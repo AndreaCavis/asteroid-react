@@ -15,11 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="dark">
+      <body className="min-h-screen flex flex-col">
         <title>Asteroid</title>
         <Navbar />
-        <Sidebar />
-        <div className="pt-28 dark">{children}</div>
+        <div className="flex flex-1 items-stretch pt-24">
+          <Sidebar />
+          <div className="flex-grow">{children}</div>
+        </div>
       </body>
     </html>
   );
