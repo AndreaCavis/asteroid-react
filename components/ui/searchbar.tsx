@@ -125,8 +125,8 @@ export default function Searchbar() {
   };
 
   return (
-    <div className="flex justify-center">
-      <form className="w-2/5 relative">
+    <div className="flex justify-center w-1/2">
+      <form className="flex-none relative w-full">
         <div>
           <input
             type="search"
