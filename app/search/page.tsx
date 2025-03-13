@@ -1,9 +1,12 @@
 "use client";
-import NotFoundPage from "@/app/not-found";
+import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 import Searchbar from "@/components/ui/searchbar";
 import ProductsList from "@/components/ui/productsList";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+
+// TO-DO: Fix bug that empty searchbar leaves traces of previous search in the page
 
 export default function Results() {
   const [products, setProducts] = useState([]);
@@ -32,24 +35,44 @@ export default function Results() {
 
   if (notFound)
     return (
-      <>
-        <h1 className="text-white text-4xl text-center">
-          Results for <span className="text-[#EA3680] text-4xl">{name}</span>{" "}
-        </h1>
-        <Searchbar />
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center">
+          <div className="flex-1 flex justify-center">
+            <Searchbar />
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-200 hover:text-white">
+              Sort
+              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+            </DropdownMenuTrigger>
+          </DropdownMenu>
+        </div>
+
         <h1 className="ml-4 text-white text-2xl">
-          <span className="text-[#EA3680] text-2xl">Sorry</span>, we don't have what you're looking for
+          Sorry, we can't find <span className="text-[#EA3680] text-2xl">{name}</span>
         </h1>
-      </>
+      </main>
     );
 
   return (
-    <>
-      <h1 className="text-white text-4xl text-center">
-        Results for <span className="text-[#EA3680] text-4xl">{name}</span>{" "}
+    <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center">
+        <div className="flex-1 flex justify-center">
+          <Searchbar />
+        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-200 hover:text-white">
+            Sort
+            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+          </DropdownMenuTrigger>
+        </DropdownMenu>
+      </div>
+
+      <h1 className="text-white text-2xl">
+        Results for <span className="text-[#EA3680] text-2xl underlined">{name}</span>
       </h1>
-      <Searchbar />
+
       <ProductsList products={products} />
-    </>
+    </main>
   );
 }
