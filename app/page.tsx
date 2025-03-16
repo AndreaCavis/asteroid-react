@@ -19,7 +19,7 @@ export default async function Home() {
           <Searchbar />
         </div>
         <DropdownMenu>
-          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-200 hover:text-white">
+          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-400 hover:text-white">
             Sort
             <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
           </DropdownMenuTrigger>
