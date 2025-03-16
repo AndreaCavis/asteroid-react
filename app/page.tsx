@@ -12,7 +12,6 @@ export default function Home() {
   const [filter, setFilter] = useState({
     sort: "none",
   });
-  console.log(filter);
 
   const [products, setProducts] = useState([]);
 
