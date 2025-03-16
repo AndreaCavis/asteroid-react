@@ -1,5 +1,7 @@
 import { Product } from "../ui/product-data";
 
+// CURRENTLY NOT USED
+
 const ProductList = ({ products }: { products: Product[] }) => {
   return (
     // TO-DO, fix layout by modifying homepage (or results page)

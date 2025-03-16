@@ -1,3 +1,5 @@
+// CURRENTLY NOT USED
+
 const ProductSkeleton = () => {
   return (
     <div className="bg-none rounded-md w-52 animate-pulse">
