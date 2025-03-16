@@ -7,18 +7,16 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Product } from "@/components/ui/product-data";
 
-interface Params {
-  id: string;
-}
-
-// REMEMBER: Modify this if you remove the ID
 export default function ProductDetailsPage() {
   //{ params }: { params: { id: string } } removed for useParams()
   const params = useParams();
+  const router = useRouter();
   const [product, setProduct] = useState<Product | undefined>(undefined);
-  const [error, setError] = useState(false); // ✅ Proper error handling
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    if (!params.id) return; // prevent database call if no id is present
+
     const fetchProduct = async () => {
       try {
         const response = await fetch(`http://localhost:3000/api/products/${params.id}`);
@@ -40,14 +38,14 @@ export default function ProductDetailsPage() {
   }, [params.id]);
 
   if (error) return <NotFoundPage />;
-  if (!product) return <p>Loading...</p>; // loading section, to be modified
+  if (!product) return <p className="p-4">Loading...</p>; // loading section, to be modified
 
   return (
     <>
       <div className="flex">
         <div
-          onClick={useRouter().back}
-          className="mt-4 mr-auto ml-12 text-white text-4xl  hover:text-current hover:scale-105 duration-300"
+          onClick={() => router.back()}
+          className="mt-4 mr-auto ml-12 text-white text-4xl hover:text-current hover:scale-105 duration-300"
         >
           <FaArrowLeftLong />
         </div>
@@ -58,6 +56,8 @@ export default function ProductDetailsPage() {
             src={"/" + product.imageUrl}
             alt={product.name + " image"}
             className="w-4/6 h-auto rounded-3xl ring-4 pink-shadow"
+            width={400}
+            height={400}
           />
         </div>
         <div className="md:w-1/2">
