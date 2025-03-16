@@ -117,9 +117,27 @@ html::-webkit-scrollbar-button:single-button:increment {
   color: white;
 }
 
+/* caret (cursor) color */
 input {
   caret-color: lightskyblue;
 }
+
+/* checkbox background color */
+/* Default state: Transparent background */
+input[type="checkbox"] {
+  accent-color: #EA3680; /* Applies only when checked */
+}
+input[type="checkbox"]:not(:checked) {
+  opacity: 0.3; /* Makes the background appear transparent */
+} 
+input[type="checkbox"]:not(:checked):hover {
+  opacity: 0.5;
+}
+/* Ensure checked background is pink */
+input[type="checkbox"]:checked {
+opacity: 1;
+}
+
 
 ::placeholder {
   color: #757575 !important;
