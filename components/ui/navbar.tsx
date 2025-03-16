@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import Link from "next/link";
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <nav className="pink-shadow fixed min-h-0 max-h-24 bg-black z-50">
       <Link href={"/"}>
@@ -15,4 +15,6 @@ export default function Navbar() {
       </Link>
     </nav>
   );
-}
+};
+
+export default Navbar;

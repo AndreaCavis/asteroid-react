@@ -1,9 +1,8 @@
 import { Product } from "./product-data";
 import Image from "next/image";
 import Link from "next/link";
-import { createContext, useContext } from "react";
 
-export default function ProductsList({ products }: { products: Product[] }) {
+const ProductsList = ({ products }: { products: Product[] }) => {
   return (
     <div className="m-4 grid gap-x-4 gap-y-8 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
       {products.map((product) => (
@@ -34,4 +33,6 @@ export default function ProductsList({ products }: { products: Product[] }) {
       ))}
     </div>
   );
-}
+};
+
+export default ProductsList;

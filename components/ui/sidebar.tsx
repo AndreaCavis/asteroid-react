@@ -7,7 +7,7 @@ export const SORT_OPTIONS = [
   { name: "Price: High to Low", value: "price-desc" },
 ] as const; // as const creates read-only const
 
-export default function Sidebar() {
+const Sidebar = () => {
   const [filter, useFilter] = useState(); // FOR SORT_OPTION
 
   return (
@@ -15,4 +15,6 @@ export default function Sidebar() {
       <h1>This is the sidebar</h1>
     </div>
   );
-}
+};
+
+export default Sidebar;
