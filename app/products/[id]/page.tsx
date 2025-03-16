@@ -1,27 +1,56 @@
+"use client";
+
 import NotFoundPage from "@/app/not-found";
-// import { useRouter } from "next/navigation"; // use-client only
-import Link from "next/link";
+import { useParams, useRouter } from "next/navigation"; // use-client only
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import React from "react";
+import { Product } from "@/components/ui/product-data";
+
+interface Params {
+  id: string;
+}
 
 // REMEMBER: Modify this if you remove the ID
-export default async function ProductDetailsPage({ params }: { params: { id: string } }) {
-  const response = await fetch("http://localhost:3000/api/products/" + params.id);
+export default function ProductDetailsPage() {
+  //{ params }: { params: { id: string } } removed for useParams()
+  const params = useParams();
+  const [product, setProduct] = useState<Product | undefined>(undefined);
+  const [error, setError] = useState(false); // ✅ Proper error handling
 
-  if (response.status === 404) {
-    return <NotFoundPage />;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/products/${params.id}`);
 
-  const product = await response.json();
+        if (response.status === 404) {
+          setError(true);
+          return;
+        }
+
+        const data: Product = await response.json();
+        setProduct(data);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+        setError(true);
+      }
+    };
+
+    fetchProduct();
+  }, [params.id]);
+
+  if (error) return <NotFoundPage />;
+  if (!product) return <p>Loading...</p>; // loading section, to be modified
 
   return (
     <>
       <div className="flex">
-        <Link
-          href="/"
+        <div
+          onClick={useRouter().back}
           className="mt-4 mr-auto ml-12 text-white text-4xl  hover:text-current hover:scale-105 duration-300"
         >
           <FaArrowLeftLong />
-        </Link>
+        </div>
       </div>
       <div className="container mx-auto p-8 flex flex-col md:flex-row">
         <div className="md:w-1/2 mb-4 md:mb-0 flex justify-center md:mr-8">
@@ -38,9 +67,6 @@ export default async function ProductDetailsPage({ params }: { params: { id: str
           <h3 className="text-3xl font-semibold mb-4">Suggested Use</h3>
           <p className="text-2xl text-white">{product.suggested_use}</p>
         </div>
-        {/* <h1 onClick={useRouter().back} className=" m-4 text-xl underlined">
-          Go back
-        </h1> */}
       </div>
     </>
   );
