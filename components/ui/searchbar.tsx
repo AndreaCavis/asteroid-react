@@ -26,7 +26,7 @@ function highlightMatch(text: string, query: string): React.ReactNode {
   );
 }
 
-export default function Searchbar() {
+const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [activeSearch, setActiveSearch] = useState<string[]>([]);
   const [allProductNames, setAllProductNames] = useState<string[]>([]); // Store all product names
@@ -163,4 +163,6 @@ export default function Searchbar() {
       </form>
     </div>
   );
-}
+};
+
+export default Searchbar;
