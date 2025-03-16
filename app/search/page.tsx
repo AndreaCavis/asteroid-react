@@ -2,7 +2,7 @@
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import Searchbar from "@/components/ui/searchbar";
-import ProductsList from "@/components/ui/productsList";
+import ProductsList from "@/components/ui/product-list";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SORT_OPTIONS } from "@/components/ui/sidebar";
