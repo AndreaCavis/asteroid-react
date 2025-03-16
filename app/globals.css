@@ -68,6 +68,48 @@
   }
 }
 
+/* --------------------------------------------- Begin scrollbar stilyng -------------------------------------------------------------- */
+html {
+  overflow-y: scroll; /* Keeps scrollbar space reserved */
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Scrollbar track */
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar thumb (the draggable part) */
+html::-webkit-scrollbar-thumb {
+  background: rgba(234, 54, 128, 0.8);;
+  border-radius: 2px;
+}
+
+/* Up Arrow (▲) */
+html::-webkit-scrollbar-button:single-button:decrement {
+  display: block;
+  height: 10px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='12,4 4,16 20,16' fill='rgba(234, 54, 128, 0.8)'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+}
+
+/* Down Arrow (▼) */
+html::-webkit-scrollbar-button:single-button:increment {
+  display: block;
+  height: 10px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><polygon points='4,8 20,8 12,20' fill='rgba(234, 54, 128, 0.8)'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;  
+}
+/* --------------------------------------------- End scrollbar stilyng -------------------------------------------------------------- */
+
+
 /* Highlithgt background and text colour */
 ::selection {
   background-color: rgba(234, 54, 128, 0.5); /* Semi-transparent pink */
@@ -165,4 +207,3 @@ input[type="search"]::-webkit-search-cancel-button {
 <color name="grey600">#757575</color>
 <color name="pink900">#880e4f</color>
 <color name="lightblue200">#40c4ff</color> */
-
