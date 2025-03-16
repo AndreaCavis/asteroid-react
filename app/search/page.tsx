@@ -21,11 +21,17 @@ export default function Results() {
 
   // fetching products from db based on query
   useEffect(() => {
-    if (!name) return;
+    if (!name) {
+      setProducts([]); // Clear products when search is empty
+      setNotFound(false); // Reset notFound state
+      return;
+    }
+
     const fetchProducts = async () => {
       try {
         const response = await fetch(`/api/query?search=${encodeURIComponent(name)}`);
         if (response.status === 404) {
+          setProducts([]); // Ensure products is empty when no results
           setNotFound(true);
           return;
         }
@@ -39,6 +45,44 @@ export default function Results() {
     fetchProducts();
   }, [name]);
 
+  // SEARCHBAR EMPTY
+  if (!name)
+    return (
+      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center">
+          <div className="flex-1 flex justify-center">
+            <Searchbar />
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-400 hover:text-white">
+              Sort
+              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {SORT_OPTIONS.map((option) => (
+                <button
+                  key={option.name}
+                  className={cn("text-left w-full block px-4 py-2", {
+                    "text-white bg-stone-800": option.value === filter.sort,
+                    "text-gray-400": option.value !== filter.sort,
+                  })}
+                  onClick={() => {
+                    setFilter((prev) => ({
+                      ...prev,
+                      sort: option.value,
+                    }));
+                  }}
+                >
+                  {option.name}
+                </button>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </main>
+    );
+
+  // PRODUCT NOT FOUND
   if (notFound)
     return (
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -82,6 +126,7 @@ export default function Results() {
       </main>
     );
 
+  // PRODUCTS LIST
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex items-center">
