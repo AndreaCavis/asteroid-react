@@ -1,4 +1,4 @@
-import { Product } from "../../app/product-data";
+import { Product } from "./product-data";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,7 +16,8 @@ export default function ProductsList({ products }: { products: Product[] }) {
               src={"/" + product.imageUrl}
               alt={product.name + " image"}
               fill
-              className="object-contain rounded-md"
+              sizes="max-width: 700px, max-height: 700px"
+              className="object-contain rounded-lg"
             />
           </div>
           <h2 className="text-lg font-semibold mb-1">{product.name}</h2>
