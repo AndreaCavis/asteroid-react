@@ -6,7 +6,7 @@ export default function Sidebar() {
   ] as const;
 
   return (
-    <div className="flex w-1/5 border-r-2 border-pink-800">
+    <div className="w-1/5 flex-none border-r-2 border-pink-800 min-h-full">
       <h1>This is the sidebar</h1>
     </div>
   );

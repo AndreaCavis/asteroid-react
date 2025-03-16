@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <title>Asteroid</title>
         <Navbar />
-        <div className="flex flex-1 items-stretch pt-24">
+        <div className="flex flex-1 items-stretch pt-28 min-h-screen">
           <Sidebar />
           <div className="flex-grow">{children}</div>
         </div>
