@@ -7,7 +7,7 @@ import { SORT_OPTIONS } from "../components/ui/sidebar";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import ProductList from "@/components/Products/ProductList"; // TO-DO fix layout
-import ProductsList from "@/components/ui/productsList";
+import ProductsList from "@/components/ui/product-list";
 
 export default function Home() {
   const [filter, setFilter] = useState({
