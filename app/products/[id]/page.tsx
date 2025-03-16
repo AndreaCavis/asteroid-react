@@ -6,6 +6,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Product } from "@/components/ui/product-data";
+import ProductDetailsSkeleton from "@/components/Products/ProductDetailsSkeleton";
 
 export default function ProductDetailsPage() {
   //{ params }: { params: { id: string } } removed for useParams()
@@ -38,7 +39,7 @@ export default function ProductDetailsPage() {
   }, [params.id]);
 
   if (error) return <NotFoundPage />;
-  if (!product) return <p className="p-4">Loading...</p>; // loading section, to be modified
+  if (!product) return <ProductDetailsSkeleton />;
 
   return (
     <>
