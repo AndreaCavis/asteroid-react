@@ -42,7 +42,7 @@
     --secondary: #5A2B2A;
     --secondary-foreground: #EA3680;
     --muted: #5A2B2A;
-    --muted-foreground: #9E7C5E;
+    --muted-foreground: #ffffff;
     --accent: #5A2B2A;
     --accent-foreground: #EA3680;
     --destructive: #FF6A00;
@@ -55,6 +55,7 @@
     --chart-3: #C4E6FF;
     --chart-4: #F5C6B3;
     --chart-5: #F5A2A2;
+    --radius: 0.5rem;
   }
 }
 
@@ -74,7 +75,7 @@ html {
 }
 
 html::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 /* Scrollbar track */
@@ -84,7 +85,7 @@ html::-webkit-scrollbar-track {
 
 /* Scrollbar thumb (the draggable part) */
 html::-webkit-scrollbar-thumb {
-  background: rgba(234, 54, 128, 0.8);;
+  background: rgba(234, 54, 128, 0.5);;
   border-radius: 2px;
 }
 
@@ -130,6 +131,14 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
+.hover\:underline:hover {
+  text-decoration-line: underline;
+  text-decoration-color: var(--primary);
+}
+
+.checked\:bg-\[var\(--primary\)\]:checked {
+  background-color: var(--primary);
+}
 
 
 /* Transition line left-to-right */

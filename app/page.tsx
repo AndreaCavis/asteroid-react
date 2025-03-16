@@ -11,6 +11,7 @@ import ProductsList from "@/components/ui/product-list";
 
 export default function Home() {
   const [filter, setFilter] = useState({
+    type: [],
     sort: "none",
   });
 
@@ -39,7 +40,7 @@ export default function Home() {
           <Searchbar />
         </div>
         <DropdownMenu>
-          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-400 hover:text-white">
+          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-stone-400 hover:text-white">
             Sort
             <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
           </DropdownMenuTrigger>
@@ -48,7 +49,7 @@ export default function Home() {
               <button
                 key={option.name}
                 className={cn("text-left w-full block px-4 py-2", {
-                  "text-white bg-stone-800": option.value === filter.sort,
+                  "text-white bg-stone-800 rounded": option.value === filter.sort,
                   "text-gray-400": option.value !== filter.sort,
                 })}
                 onClick={() => {

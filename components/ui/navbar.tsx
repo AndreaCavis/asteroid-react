@@ -10,7 +10,7 @@ const Navbar = () => {
           alt={"Asteroid logo"}
           width={334}
           height={100}
-          className="w-1/6 h-auto m-2 inline-block duration-500 hover:scale-105"
+          className="w-1/6 h-auto m-2 inline-block duration-100 hover:opacity-75"
         />
       </Link>
     </nav>
