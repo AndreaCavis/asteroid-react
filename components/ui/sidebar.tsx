@@ -90,8 +90,10 @@ const Sidebar = () => {
       >
         {/* Supplement (type) filters (bcaa, creatine, etc) */}
         <AccordionItem value="type">
-          <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-white group-hover:text-[var(--primary)] text-lg">Supplement</span>
+          <AccordionTrigger className="pb-3" defaultValue="item">
+            <span className="font-medium text-white group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
+              Supplement
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -111,7 +113,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="ml-3 text-base text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
                   >
                     {option.label}
                   </label>
