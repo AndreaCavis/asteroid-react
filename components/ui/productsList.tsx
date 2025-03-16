@@ -1,28 +1,35 @@
 import { Product } from "./product-data";
 import Image from "next/image";
 import Link from "next/link";
+import { createContext, useContext } from "react";
 
 export default function ProductsList({ products }: { products: Product[] }) {
   return (
-    <div className="m-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+    <div className="m-4 grid gap-x-4 gap-y-8 grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]">
       {products.map((product) => (
         <Link
           key={product.id}
           href={"/products/" + product.id}
-          className="bg-none p-2 rounded-lg product-box w-48 md:w-52 lg:w-56 hover:scale-105"
+          className="bg-none rounded-md w-52 hover:opacity-75 transition-transform" // removed shadow and scale
+          // className="flex hover:scale-105 duration-300"
         >
-          <div className="flex justify-center mb-2 h-36 w-full relative">
+          <div className="flex justify-center h-52 w-52 overflow-hidden">
             <Image
               src={"/" + product.imageUrl}
               alt={product.name + " image"}
-              fill
-              sizes="max-width: 700px, max-height: 700px"
-              className="object-contain rounded-lg"
+              width={208}
+              height={208}
+              // sizes="max-width: 700px, max-height: 700px"
+              className="object-fill rounded-md"
             />
           </div>
-          <h2 className="text-lg font-semibold mb-1">{product.name}</h2>
-          <h3 className="text-md text-white font-medium mb-1">{product.brand}</h3>
-          <p className="text-md text-white font-semibold">£{product.price}</p>
+          <div className="w-52 p-2">
+            <h2 className="text-lg font-semibold">{product.name}</h2>
+            <h3 className="text-md text-white font-normal mb-1">{product.brand}</h3>
+            <p className="text-md text-[#EA3680] font-semibold">
+              <span className="text-white">£</span> {product.price}
+            </p>
+          </div>
         </Link>
       ))}
     </div>
