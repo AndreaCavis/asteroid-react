@@ -3,6 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { cn } from "@/lib/utils";
 
 // Function to highlight typed letters in suggestions
 function highlightMatch(text: string, query: string): React.ReactNode {
@@ -148,7 +149,9 @@ export default function Searchbar() {
               {activeSearch.map((item, index) => (
                 <span
                   key={index}
-                  className={`hover:bg-stone-800 rounded-md pl-4  ${index === selectedIndex ? "bg-stone-800" : ""}`}
+                  className={cn("hover:bg-stone-800 rounded-md pl-4", {
+                    "bg-stone-800": index === selectedIndex,
+                  })}
                   onClick={() => handleSuggestionClick(item)}
                 >
                   {highlightMatch(item, searchValue)}
