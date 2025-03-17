@@ -1,12 +1,5 @@
-export interface Product {
-    id: string;
-    imageUrl: string;
-    brand: string;
-    name: string;
-    type: string;
-    suggested_use: string;
-    price: number;
-  }
+import { Product } from "@/lib/validators/product-validator";
+
   
   export const products: Product[] = [{
     id: '123',

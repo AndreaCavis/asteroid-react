@@ -5,8 +5,8 @@ import { useParams, useRouter } from "next/navigation"; // use-client only
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import React from "react";
-import { Product } from "@/components/ui/product-data";
 import ProductDetailsSkeleton from "@/components/Products/ProductDetailsSkeleton";
+import { Product } from "@/lib/validators/product-validator";
 
 export default function ProductDetailsPage() {
   //{ params }: { params: { id: string } } removed for useParams()

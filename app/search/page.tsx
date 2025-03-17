@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SORT_OPTIONS } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { Product } from "@/components/ui/product-data";
+import { Product } from "@/lib/validators/product-validator";
 
 // TO-DO: Fix bug that empty searchbar leaves traces of previous search in the page
 

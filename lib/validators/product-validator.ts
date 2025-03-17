@@ -6,6 +6,19 @@ export const AVAILABLE_BRANDS = ["Optimum Nutrition", "MyProtein", "Yamamoto Nut
 
 export const AVAILABLE_SORT = ["none", "price-asc", "price-desc"] as const;
 
+export const ProductValidator = z.object({
+    id: z.string(),
+    imageUrl: z.string().regex(/^\/?public\/.+/, "Invalid image path"), // Ensures it starts with 'public/'
+    brand: z.string(),
+    name: z.string(),
+    type: z.string(),
+    suggested_use: z.string(),
+    price: z.number().positive(),
+  });
+
+  export type Product = z.infer<typeof ProductValidator>;
+
+
 // schema to enforce shape on back-end and full type safety on front-end
 export const ProductFilterValidator = z.object({
     type: z.array(z.enum(AVAILABLE_TYPES)),
@@ -13,6 +26,7 @@ export const ProductFilterValidator = z.object({
     sort: z.enum(AVAILABLE_SORT),
     price: z.tuple([z.number(), z.number()])
 });
+
 
 // the price will also have a custom value, it will be handled separately
 export type ProductState = Omit<z.infer<typeof ProductFilterValidator>, "price"> & {
