@@ -145,7 +145,7 @@ const Searchbar = () => {
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
-            <div className="absolute z-50 top-24 box-shadow bg-[#0a0a0a] rounded-md text-white w-full flex flex-col gap-2">
+            <div className="absolute z-50 top-24 bg-black rounded-md text-white w-full flex flex-col gap-2">
               {activeSearch.map((item, index) => (
                 <span
                   key={index}
