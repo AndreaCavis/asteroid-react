@@ -123,7 +123,6 @@ input {
 }
 
 /* checkbox background color */
-/* Default state: Transparent background */
 input[type="checkbox"] {
   accent-color: #EA3680; /* Applies only when checked */
 }
@@ -135,6 +134,21 @@ input[type="checkbox"]:not(:checked):hover {
 }
 /* Ensure checked background is pink */
 input[type="checkbox"]:checked {
+opacity: 1;
+}
+
+/* radiobox background color */
+input[type="radio"] {
+  accent-color: #EA3680; /* Applies only when checked */
+}
+input[type="radio"]:not(:checked) {
+  opacity: 0.3; /* Makes the background appear transparent */
+} 
+input[type="radio"]:not(:checked):hover {
+  opacity: 0.5;
+}
+/* Ensure checked background is pink */
+input[type="radio"]:checked {
 opacity: 1;
 }
 
