@@ -68,7 +68,7 @@ const DEFAULT_CUSTOM_PRICE = [0, 150] as [number, number];
 
 // ------------------------------------------- BEGIN SIDEBAR IMPLMENTATION -----------------------------------------------------------------------------------
 const Sidebar = () => {
-  const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price", "sort"]); // ACCORDION TOGGLE, add items here
+  const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
 
   const [filter, setFilter] = useState<ProductState>({
     // default filters allow all the available options
