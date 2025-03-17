@@ -27,8 +27,7 @@ export const ProductFilterValidator = z.object({
     price: z.tuple([z.number(), z.number()])
 });
 
-
-// the price will also have a custom value, it will be handled separately
+// Convert Zod Schema to TypeScript Type. price handled separately due to custom value
 export type ProductState = Omit<z.infer<typeof ProductFilterValidator>, "price"> & {
     price: { isCustom: boolean, range: [number, number] }
 }
