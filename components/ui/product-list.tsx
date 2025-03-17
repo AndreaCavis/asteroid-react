@@ -1,4 +1,4 @@
-import { Product } from "./product-data";
+import { Product } from "@/lib/validators/product-validator";
 import Image from "next/image";
 import Link from "next/link";
 
