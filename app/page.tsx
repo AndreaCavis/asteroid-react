@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex items-baseline justify-between border-b-2 border-stone-600 pb-4">
-        <h1 className="text-4xl font-semibold tracking-tight text-white">
+        <h1 className="font-semibold tracking-tight text-white lg:text-4xl md:text-3xl sm:text-2xl text-xl ">
           Find the <span className="text-[#EA3680] underlined">supplement</span> you're looking for
         </h1>
       </div>
