@@ -7,11 +7,12 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SORT_OPTIONS } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
+import { Product } from "@/components/ui/product-data";
 
 // TO-DO: Fix bug that empty searchbar leaves traces of previous search in the page
 
 export default function Results() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [notFound, setNotFound] = useState(false); // Track not found state
   const name = useSearchParams().get("query") ?? "";
 

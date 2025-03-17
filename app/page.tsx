@@ -8,14 +8,16 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import ProductList from "@/components/Products/ProductList"; // TO-DO fix layout
 import ProductsList from "@/components/ui/product-list";
+import { Product } from "@/components/ui/product-data";
 
 export default function Home() {
+  // Temp sort dropdown menu
   const [filter, setFilter] = useState({
     type: [],
     sort: "none",
   });
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   // async function to handle database call in use client
   useEffect(() => {
