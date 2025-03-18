@@ -1,4 +1,5 @@
 "use client";
+
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
 import { Slider } from "./slider";
 import { cn } from "@/lib/utils";
@@ -13,10 +14,10 @@ import {
 import { useState } from "react";
 
 const Sidebar = () => {
-  const { filter, setFilter } = useFilters(); // Get state & updater from context
+  const { filter, setFilter, debouncedRefetch } = useFilters(); // Get state & updater from context
   const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
 
-  console.log(filter);
+  // console.log(filter);
 
   // array filter (no price) handler
   const applyArrayFilters = ({ category, value }: { category: "type" | "brand"; value: string }) => {
@@ -28,6 +29,8 @@ const Sidebar = () => {
         : // if value wasn't in array, we append it at the end of it
           [...prev[category], value],
     }));
+
+    debouncedRefetch();
   };
 
   const minPrice = Math.min(filter.price.range[0], filter.price.range[1]);
@@ -43,7 +46,7 @@ const Sidebar = () => {
         {/* SORT filters */}
         <AccordionItem value="sort">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-white group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
               Sort
             </span>
           </AccordionTrigger>
@@ -59,13 +62,15 @@ const Sidebar = () => {
                         ...prev,
                         sort: option.value,
                       }));
+
+                      debouncedRefetch();
                     }}
                     checked={filter.sort.includes(option.value)}
                     className="peer"
                   />
                   <label
                     htmlFor={`sort-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
                   >
                     {option.label}
                   </label>
@@ -78,7 +83,7 @@ const Sidebar = () => {
         {/* SUPPLEMENT (type) filters (bcaa, creatine, etc) */}
         <AccordionItem value="type">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-white group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
               Supplement
             </span>
           </AccordionTrigger>
@@ -100,7 +105,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
                   >
                     {option.label}
                   </label>
@@ -113,7 +118,9 @@ const Sidebar = () => {
         {/* BRAND filters */}
         <AccordionItem value="brand">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-white group-hover:text-[var(--primary)] text-lg">Brand</span>
+            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] text-lg">
+              Brand
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -133,7 +140,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`brand-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
                   >
                     {option.label}
                   </label>
@@ -146,7 +153,9 @@ const Sidebar = () => {
         {/* PRICE filters */}
         <AccordionItem value="price">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-white group-hover:text-[var(--primary)] text-lg">Price</span>
+            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] text-lg">
+              Price
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -163,6 +172,8 @@ const Sidebar = () => {
                           range: [...option.value],
                         },
                       }));
+
+                      debouncedRefetch();
                     }}
                     checked={
                       !filter.price.isCustom &&
@@ -173,7 +184,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
                   >
                     {option.label}
                   </label>
@@ -189,21 +200,23 @@ const Sidebar = () => {
                         ...prev,
                         price: {
                           isCustom: true,
-                          range: [0, 150],
+                          range: [0, 100],
                         },
                       }));
+
+                      debouncedRefetch();
                     }}
                     checked={filter.price.isCustom}
                     className="peer"
                   />
                   <label
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-white peer-checked:text-white"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
                   >
                     Custom
                   </label>
                 </div>
-                <div className="flex justify-between pb-2 text-white font-medium lg:text-base md:text-sm sm:text-xs text-xs">
+                <div className="flex justify-between pb-2 text-[var(--accent-foreground)] font-medium lg:text-base md:text-sm sm:text-xs text-xs">
                   <p>Price</p>
                   <div>
                     £
@@ -229,6 +242,8 @@ const Sidebar = () => {
                         range: [newMin, newMax],
                       },
                     }));
+
+                    debouncedRefetch();
                   }}
                   value={filter.price.isCustom ? filter.price.range : DEFAULT_CUSTOM_PRICE}
                   min={DEFAULT_CUSTOM_PRICE[0]}
