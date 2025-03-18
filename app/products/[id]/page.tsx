@@ -46,7 +46,7 @@ export default function ProductDetailsPage() {
       <div className="flex">
         <div
           onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-white text-4xl hover:text-current hover:scale-105 duration-300"
+          className="mt-4 mr-auto ml-12 text-[var(--accent-foreground)] text-4xl hover:text-current hover:scale-105 duration-300"
         >
           <FaArrowLeftLong />
         </div>
@@ -64,9 +64,9 @@ export default function ProductDetailsPage() {
         <div className="md:w-1/2">
           <h1 className="text-5xl font-bold mb-6">{product.brand}</h1>
           <h1 className="text-3xl font-bold mb-8">{product.name}</h1>
-          <p className="text-2xl text-white mb-8">${product.price}</p>
+          <p className="text-2xl text-[var(--accent-foreground)] mb-8">${product.price}</p>
           <h3 className="text-3xl font-semibold mb-4">Suggested Use</h3>
-          <p className="text-2xl text-white">{product.suggested_use}</p>
+          <p className="text-2xl text-[var(--accent-foreground)]">{product.suggested_use}</p>
         </div>
       </div>
     </>
