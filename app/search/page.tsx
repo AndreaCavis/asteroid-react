@@ -5,9 +5,9 @@ import Searchbar from "@/components/ui/searchbar";
 import ProductsList from "@/components/ui/product-list";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { SORT_OPTIONS } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { Product } from "@/lib/validators/product-validator";
+import { SORT_OPTIONS } from "@/components/FiltersContext";
 
 // TO-DO: Fix bug that empty searchbar leaves traces of previous search in the page
 
@@ -62,7 +62,7 @@ export default function Results() {
             <DropdownMenuContent align="end">
               {SORT_OPTIONS.map((option) => (
                 <button
-                  key={option.name}
+                  key={option.label}
                   className={cn("text-left w-full block px-4 py-2", {
                     "text-white bg-stone-800": option.value === filter.sort,
                     "text-gray-400": option.value !== filter.sort,
@@ -74,7 +74,7 @@ export default function Results() {
                     }));
                   }}
                 >
-                  {option.name}
+                  {option.label}
                 </button>
               ))}
             </DropdownMenuContent>
@@ -102,7 +102,7 @@ export default function Results() {
             <DropdownMenuContent align="end">
               {SORT_OPTIONS.map((option) => (
                 <button
-                  key={option.name}
+                  key={option.label}
                   className={cn("text-left w-full block px-4 py-2", {
                     "text-white bg-stone-800": option.value === filter.sort,
                     "text-gray-400": option.value !== filter.sort,
@@ -114,7 +114,7 @@ export default function Results() {
                     }));
                   }}
                 >
-                  {option.name}
+                  {option.label}
                 </button>
               ))}
             </DropdownMenuContent>
@@ -145,7 +145,7 @@ export default function Results() {
           <DropdownMenuContent align="end">
             {SORT_OPTIONS.map((option) => (
               <button
-                key={option.name}
+                key={option.label}
                 className={cn("text-left w-full block px-4 py-2", {
                   "text-white bg-stone-800": option.value === filter.sort,
                   "text-gray-400": option.value !== filter.sort,
@@ -157,7 +157,7 @@ export default function Results() {
                   }));
                 }}
               >
-                {option.name}
+                {option.label}
               </button>
             ))}
           </DropdownMenuContent>
