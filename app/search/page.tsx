@@ -1,7 +1,7 @@
 "use client";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import Searchbar from "@/components/ui/searchbar";
+import Searchbar from "@/components/ui/Searchbar";
 import ProductsList from "@/components/ui/product-list";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ export default function Results() {
           <DropdownMenu>
             <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-gray-400 hover:text-white">
               Sort
-              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[var(--primary)]" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {SORT_OPTIONS.map((option) => (
@@ -97,7 +97,7 @@ export default function Results() {
               onClick={() => console.log("dropdown clicked")}
             >
               Sort
-              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+              <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[var(--primary)]" />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {SORT_OPTIONS.map((option) => (
@@ -122,7 +122,7 @@ export default function Results() {
         </div>
 
         <h1 className="ml-4 text-white text-2xl">
-          Sorry, we can't find <span className="text-[#EA3680] text-2xl">{name}</span>
+          Sorry, we can't find <span className="text-[var(--primary)] text-2xl">{name}</span>
         </h1>
       </main>
     );
@@ -140,7 +140,7 @@ export default function Results() {
             onClick={() => console.log("dropdown clicked")}
           >
             Sort
-            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[#EA3680]" />
+            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[var(--primary)]" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {SORT_OPTIONS.map((option) => (
@@ -165,7 +165,7 @@ export default function Results() {
       </div>
 
       <h1 className="text-white text-2xl">
-        Results for <span className="text-[#EA3680] text-2xl underlined">{name}</span>
+        Results for <span className="text-[var(--primary)] text-2xl underlined">{name}</span>
       </h1>
 
       <ProductsList products={products} />
