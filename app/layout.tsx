@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "../components/ui/navbar";
-import Sidebar from "../components/ui/sidebar";
 import { FiltersProvider } from "@/components/FiltersContext";
+import Sidebar from "@/components/ui/Sidebar";
+import Navbar from "@/components/ui/Navbar";
 
 export const metadata: Metadata = {
   title: "Asteroid",
