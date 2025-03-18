@@ -1,5 +1,13 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+"use client";
+import { createContext, useContext, useState, useEffect, ReactNode, useRef, useCallback } from "react";
 import { Product, ProductState } from "@/lib/validators/product-validator";
+import { useDebounce, useDebouncedCallback } from "use-debounce";
+
+export const SORT_OPTIONS = [
+  { value: "none", label: "None" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "price-desc", label: "Price: High to Low" },
+] as const;
 
 // Filter Options (Constants)
 export const SORT_FILTERS = {
@@ -37,21 +45,22 @@ export const PRICE_FILTERS = {
   id: "price",
   name: "Price",
   options: [
-    { value: [0, 150], label: "Any price" },
+    { value: [0, 100], label: "Any price" },
     { value: [0, 25], label: "Under £25" },
     { value: [0, 50], label: "Under £50" },
-    { value: [0, 100], label: "Under £100" },
+    { value: [0, 75], label: "Under £75" },
     // Custom option defined in TSX
   ],
 } as const;
 
-export const DEFAULT_CUSTOM_PRICE: [number, number] = [0, 150];
+export const DEFAULT_CUSTOM_PRICE: [number, number] = [0, 100];
 
 // Define Context Shape
 interface FiltersContextType {
   filter: ProductState;
   setFilter: React.Dispatch<React.SetStateAction<ProductState>>;
   products: Product[];
+  debouncedRefetch: () => void;
 }
 
 // Create Context
@@ -66,37 +75,47 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const [products, setProducts] = useState<Product[]>([]);
+  const firstRender = useRef(true); // ✅ Track initial render
 
   const fetchProducts = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ filter }),
-        //   body: JSON.stringify({
-        //     filter: {
-        //       sort: filter.sort,
-        //       type: filter.type,
-        //       price: filter.price.range,
-        //       brand: filter.brand,
-        //     },
+        // body: JSON.stringify({ filter }),
+        body: JSON.stringify({
+          filter: {
+            sort: filter.sort,
+            type: filter.type,
+            price: filter.price.range,
+            brand: filter.brand,
+          },
+        }),
       });
+
+      console.log("Response status:", response.status); // ✅ Debugging
 
       if (!response.ok) throw new Error("Failed to fetch products");
 
       const data: Product[] = await response.json();
       setProducts(data);
     } catch (error) {
-      console.error("Error fetching products:", error);
+      console.error("ERROR fetching products:", error);
       setProducts([]);
     }
   };
 
+  const debouncedRefetch = useDebouncedCallback(fetchProducts, 400);
+
   useEffect(() => {
-    fetchProducts();
+    debouncedRefetch();
   }, [filter]);
 
-  return <FiltersContext.Provider value={{ filter, setFilter, products }}>{children}</FiltersContext.Provider>;
+  return (
+    <FiltersContext.Provider value={{ filter, setFilter, products, debouncedRefetch }}>
+      {children}
+    </FiltersContext.Provider>
+  );
 };
 
 // Custom Hook for Accessing Filters
