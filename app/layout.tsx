@@ -19,12 +19,12 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <title>Asteroid</title>
         <Navbar />
-        <div className="flex flex-1 items-stretch lg:pt-32 md:pt-24 sm:pt-16 pt-16">
-          <Sidebar />
-          <div className="flex-grow">
-            <FiltersProvider>{children}</FiltersProvider>
+        <FiltersProvider>
+          <div className="flex flex-1 items-stretch lg:pt-32 md:pt-24 sm:pt-16 pt-16">
+            <Sidebar />
+            <div className="flex-grow">{children}</div>
           </div>
-        </div>
+        </FiltersProvider>
       </body>
     </html>
   );
