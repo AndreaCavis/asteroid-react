@@ -1,4 +1,5 @@
 "use client";
+
 import { IoSearch } from "react-icons/io5";
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
@@ -17,7 +18,7 @@ function highlightMatch(text: string, query: string): React.ReactNode {
   // Map each piece back, wrapping the matched parts in a <span>
   return parts.map((part, index) =>
     part.toLowerCase() === query.toLowerCase() ? (
-      <span key={index} className="text-[#EA3680] font-bold">
+      <span key={index} className="text-[var(--primary)] font-bold">
         {part}
       </span>
     ) : (
