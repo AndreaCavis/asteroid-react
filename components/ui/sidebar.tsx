@@ -1,110 +1,33 @@
 "use client";
-import { useState } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
-import { ProductState } from "@/lib/validators/product-validator";
 import { Slider } from "./slider";
 import { cn } from "@/lib/utils";
+import { useFilters } from "@/components/FiltersContext"; // ✅ Use filters from global context
+import {
+  SORT_FILTERS,
+  TYPE_FILTERS,
+  BRAND_FILTERS,
+  PRICE_FILTERS,
+  DEFAULT_CUSTOM_PRICE,
+} from "@/components/FiltersContext"; // ✅ Import filter constants
+import { useState } from "react";
 
-export const SORT_OPTIONS = [
-  { name: "None", value: "none" },
-  { name: "Price: Low to High", value: "price-asc" },
-  { name: "Price: High to Low", value: "price-desc" },
-] as const; // as const creates read-only const
-
-const SORT_FILTERS = {
-  id: "sort",
-  name: "sort",
-  options: [
-    { value: "none", label: "None" },
-    { value: "price-asc", label: "Price: Low to High" },
-    { value: "price-desc", label: "Price: High to Low" },
-  ],
-} as const;
-
-const TYPE_FILTERS = {
-  id: "type",
-  name: "Type",
-  options: [
-    { value: "bcaa", label: "BCAA" },
-    { value: "beta alanine", label: "Beta-Alanine" },
-    { value: "creatine", label: "Creatine" },
-    { value: "whey protein", label: "Whey Protein" },
-  ] as const,
-};
-
-const BRAND_FILTERS = {
-  id: "brand",
-  name: "Brand",
-  options: [
-    { value: "MyProtein", label: "MyProtein" },
-    { value: "Optimum Nutrition", label: "Optimum Nutrition" },
-    { value: "Yamamoto Nutrition", label: "Yamamoto Nutrition" },
-  ],
-} as const;
-
-const PRICE_FILTERS = {
-  id: "price",
-  name: "Price",
-  options: [
-    { value: [0, 150], label: "Any price" },
-    { value: [0, 25], label: "Under £25" },
-    { value: [0, 50], label: "Under £50" },
-    { value: [0, 100], label: "Under £100" },
-    // Custom option defined in TSX
-  ],
-} as const;
-
-// to display which category of products is being displayed, not implemented
-const SUPPLEMENT_TYPES = [
-  { name: "BCAA", selected: true, href: "#" },
-  { name: "Beta Alanine", selected: false, href: "#" },
-  { name: "Creatine", selected: false, href: "#" },
-  { name: "Whey Protein", selected: false, href: "#" },
-] as const;
-
-const DEFAULT_CUSTOM_PRICE = [0, 150] as [number, number];
-
-// ------------------------------------------- END FILTERS DECLARATION -----------------------------------------------------------------------------------
-
-// ------------------------------------------- BEGIN SIDEBAR IMPLMENTATION -----------------------------------------------------------------------------------
 const Sidebar = () => {
+  const { filter, setFilter } = useFilters(); // Get state & updater from context
   const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
-
-  const [filter, setFilter] = useState<ProductState>({
-    // default filters allow all the available options
-    sort: "none",
-    type: ["bcaa", "beta alanine", "creatine", "whey protein"],
-    price: { isCustom: false, range: DEFAULT_CUSTOM_PRICE },
-    brand: ["MyProtein", "Optimum Nutrition", "Yamamoto Nutrition"],
-  });
 
   console.log(filter);
 
   // array filter (no price) handler
-  const applyArrayFilters = ({
-    category,
-    value,
-  }: {
-    category: keyof Omit<typeof filter, "price" | "sort">;
-    value: string; // values inside arrays (eg: bcaa, beta alanine,... || MyProtein, Optimum Nutrition,...)
-  }) => {
-    const isFilterApplied = filter[category].includes(value as never);
-
-    // checks for value in array and creates a copy with updates value
-    // Javascript Garbage Collector removes unreferenced arrays from memory, therefore each iteration creates a new array and deletes the old one
-    if (isFilterApplied) {
-      setFilter((prev) => ({
-        ...prev,
-        // if value was previously in array, we acces it with prev[category] and remove it by keeping all the values different from the selected one
-        [category]: prev[category].filter((v) => v !== value),
-      }));
-    } else {
-      setFilter((prev) => ({
-        ...prev,
-        // if value wasn't in array, we append it at the end of it
-        [category]: [...prev[category], value],
-      }));
-    }
+  const applyArrayFilters = ({ category, value }: { category: "type" | "brand"; value: string }) => {
+    setFilter((prev) => ({
+      ...prev,
+      [category]: prev[category].includes(value as never)
+        ? // if value was previously in array, we acces it with prev[category] and remove it by keeping all the values different from the selected one
+          prev[category].filter((v) => v !== value)
+        : // if value wasn't in array, we append it at the end of it
+          [...prev[category], value],
+    }));
   };
 
   const minPrice = Math.min(filter.price.range[0], filter.price.range[1]);
@@ -115,7 +38,7 @@ const Sidebar = () => {
       <Accordion
         type="multiple"
         value={openSections}
-        onValueChange={(newValues) => setOpenSections(newValues)} // Allows toggle
+        onValueChange={(newValues) => setOpenSections(newValues)} // Allows toggle to be open
       >
         {/* SORT filters */}
         <AccordionItem value="sort">
@@ -294,9 +217,7 @@ const Sidebar = () => {
                   </div>
                 </div>
                 <Slider
-                  className={cn({
-                    "opacity-50": !filter.price.isCustom,
-                  })}
+                  className={cn({ "opacity-50": !filter.price.isCustom })}
                   disabled={!filter.price.isCustom}
                   onValueChange={(range) => {
                     const [newMin, newMax] = range;
