@@ -9,30 +9,40 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
   return (
     <>
+      {/* Back Button */}
       <div className="flex">
         <div
           onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-[var(--accent-foreground)] text-4xl hover:text-current duration-100"
+          className="mt-4 mr-auto ml-12 text-[var(--accent-foreground)] lg:text-4xl md:text-3xl sm:text-2xl text-xl hover:text-current"
         >
           <FaArrowLeftLong />
         </div>
       </div>
-      <div className="container mx-auto p-8 flex flex-col md:flex-row">
-        <div className="md:w-1/2 mb-4 md:mb-0 flex justify-center md:mr-8">
+
+      {/* Product Container */}
+      <div className="container mx-auto p-8 flex flex-col lg:flex-row items-center lg:items-start">
+        {/* Image Container - prevents squashing */}
+        <div className="lg:w-1/2 w-full flex justify-center lg:pr-8">
           <img
             src={"/" + product.imageUrl}
             alt={product.name + " image"}
-            className="w-4/6 h-auto rounded-3xl ring-4 pink-shadow"
+            className="w-full lg:max-w-md md:max-w-xs sm:max-w-72 h-auto rounded-3xl ring-4 pink-shadow"
             width={400}
             height={400}
           />
         </div>
-        <div className="md:w-1/2">
-          <h1 className="text-5xl font-bold mb-6">{product.brand}</h1>
-          <h1 className="text-3xl font-bold mb-8">{product.name}</h1>
-          <p className="text-2xl text-[var(--accent-foreground)] mb-8">${product.price}</p>
-          <h3 className="text-3xl font-semibold mb-4">Suggested Use</h3>
-          <p className="text-2xl text-[var(--accent-foreground)]">{product.suggested_use}</p>
+
+        {/* Text Content */}
+        <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 lg:mt-0">
+          <h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold mb-4">{product.brand}</h1>
+          <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold mb-6">{product.name}</h2>
+          <p className="lg:text-2xl md:text-xl sm:text-lg text-base text-[var(--accent-foreground)] mb-6">
+            ${product.price}
+          </p>
+          <h3 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold mb-4">Suggested Use</h3>
+          <p className="lg:text-xl md:text-lg sm:text-base text-sm text-[var(--accent-foreground)]">
+            {product.suggested_use}
+          </p>
         </div>
       </div>
     </>
