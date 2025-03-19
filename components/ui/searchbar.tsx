@@ -61,11 +61,11 @@ const Searchbar = () => {
   // Call this before handle search to prevent conflict with debounce callback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    handleSearch(e);
+    debouncedHandleSearch(e);
   };
 
   // debounced search function
-  const handleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const debouncedHandleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
     const query = e.target.value;
     setSearchValue(query);
@@ -84,7 +84,7 @@ const Searchbar = () => {
       .slice(0, 8);
     setActiveSearch(filteredProducts);
     setSelectedIndex(-1); // Reset selection when typing
-  }, 300); // 300ms is the debounce time for the handleSearch function
+  }, 300);
 
   // Function to handle clicking on a suggestion
   const handleSuggestionClick = (productName: string) => {
@@ -116,7 +116,7 @@ const Searchbar = () => {
   };
 
   // Performs the search and goes to the result page
-  const handleSearchSubmit = (e: React.FormEvent) => {
+  const debouncedHandleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     // Navigate to the results page
@@ -141,7 +141,7 @@ const Searchbar = () => {
           />
           <button
             className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
-            onClick={(e) => handleSearchSubmit(e)}
+            onClick={(e) => debouncedHandleSearchSubmit(e)}
           >
             <IoSearch />
           </button>
