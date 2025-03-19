@@ -51,13 +51,6 @@ const Searchbar = () => {
     fetchProducts();
   }, []);
 
-  // Ensure selectedIndex is within bounds when activeSearch updates
-  useEffect(() => {
-    if (selectedIndex >= activeSearch.length) {
-      setSelectedIndex(activeSearch.length - 1);
-    }
-  }, [activeSearch]);
-
   // Call this before handle search to prevent conflict with debounce callback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -69,10 +62,8 @@ const Searchbar = () => {
     const params = new URLSearchParams(searchParams);
     const query = e.target.value;
     setSearchValue(query);
-
     query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
     router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
-
     if (!query) {
       setActiveSearch([]);
       return;
@@ -90,12 +81,10 @@ const Searchbar = () => {
   const handleSuggestionClick = (productName: string) => {
     setSearchValue(productName); // Set the clicked suggestion in the search input
     setActiveSearch([]); // Clear the suggestions
-
     // Update the query in the URL with the clicked product name
     const params = new URLSearchParams(searchParams);
     params.set("query", productName);
     router.replace(`${pathname}?${params.toString()}`);
-
     if (inputRef.current) {
       inputRef.current.focus(); // Keeps focus on searchbar
     }
@@ -109,12 +98,14 @@ const Searchbar = () => {
     } else if (e.key === "ArrowUp") {
       e.preventDefault(); // Prevent page scrolling
       setSelectedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-    } else if (e.key === "Enter" && selectedIndex >= 0) {
+    } else if (e.key === "Enter") {
       e.preventDefault();
-      handleSuggestionClick(activeSearch[selectedIndex]);
-    }
-    if (e.key === "Escape") {
-      setActiveSearch([]);
+      if (selectedIndex >= 0) {
+        handleSuggestionClick(activeSearch[selectedIndex]); // Select from dropdown
+      }
+      setActiveSearch([]); // Close dropdown but keep text
+    } else if (e.key === "Escape") {
+      setActiveSearch([]); // Close dropdown but keep text
     }
   };
 
@@ -123,11 +114,31 @@ const Searchbar = () => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     // Navigate to the results page
-    // router.push(`/search/?query=${encodeURIComponent(searchValue)}`);
     const params = new URLSearchParams();
     params.set("query", searchValue);
     router.push(`/search/?${params.toString()}`);
+
+    setActiveSearch([]); // Close dropdown but keep search text
   };
+
+  // Ensure selectedIndex is within bounds when activeSearch updates
+  useEffect(() => {
+    if (selectedIndex >= activeSearch.length) {
+      setSelectedIndex(activeSearch.length - 1);
+    }
+  }, [activeSearch]);
+
+  // Close suggestion menu when clicking out of searchbar
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+        setActiveSearch([]); // Close suggestions only
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="flex justify-center w-1/2 ">
