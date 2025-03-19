@@ -1,7 +1,8 @@
 "use client";
-import { createContext, useContext, useState, useEffect, ReactNode, useRef, useCallback } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { Product, ProductState } from "@/lib/validators/product-validator";
-import { useDebounce, useDebouncedCallback } from "use-debounce";
+import { useDebouncedCallback } from "use-debounce";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const SORT_OPTIONS = [
   { value: "none", label: "None" },
@@ -55,10 +56,18 @@ export const PRICE_FILTERS = {
 
 export const DEFAULT_CUSTOM_PRICE: [number, number] = [0, 100];
 
+export const RESET_FILTERS: ProductState = {
+  sort: "none",
+  type: ["bcaa", "beta alanine", "creatine", "whey protein"],
+  price: { isCustom: false, range: DEFAULT_CUSTOM_PRICE },
+  brand: ["MyProtein", "Optimum Nutrition", "Yamamoto Nutrition"],
+};
+
 // Define Context Shape
 interface FiltersContextType {
   filter: ProductState;
   setFilter: React.Dispatch<React.SetStateAction<ProductState>>;
+  searchQuery: string; // ✅ Store searchQuery separately
   products: Product[];
   debouncedRefetch: () => void;
 }
@@ -67,6 +76,11 @@ interface FiltersContextType {
 const FiltersContext = createContext<FiltersContextType | null>(null);
 
 export const FiltersProvider = ({ children }: { children: ReactNode }) => {
+  const searchParamsFilter = useSearchParams();
+  const pathnameFilter = usePathname();
+
+  const searchQuery = searchParamsFilter.get("query") || ""; // Get search query from URL
+
   const [filter, setFilter] = useState<ProductState>({
     sort: "none",
     type: ["bcaa", "beta alanine", "creatine", "whey protein"],
@@ -75,10 +89,14 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const [products, setProducts] = useState<Product[]>([]);
-  const firstRender = useRef(true); // ✅ Track initial render
+
+  const pathname = usePathname(); // Get current page
+  const searchParams = useSearchParams(); // Get search query
 
   const fetchProducts = async () => {
     try {
+      const searchQuery = searchParams.get("query") || ""; // Get search term from URL
+
       const response = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -90,10 +108,11 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
             price: filter.price.range,
             brand: filter.brand,
           },
+          searchQuery: pathname === "/search" ? searchQuery : null, // Only send search query if on search page
         }),
       });
 
-      console.log("Response status:", response.status); // ✅ Debugging
+      console.log("Response status:", response.status); // Debugging
 
       if (!response.ok) throw new Error("Failed to fetch products");
 
@@ -107,12 +126,43 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
 
   const debouncedRefetch = useDebouncedCallback(fetchProducts, 400);
 
+  // Fetches products when filters change
   useEffect(() => {
+    if (pathname === "/") {
+      setFilter(RESET_FILTERS); // Reset filters when returning home
+    } else {
+      setFilter((prev) => ({
+        ...RESET_FILTERS, // Reset all filters EXCEPT the search query
+        searchQuery,
+      }));
+    }
     debouncedRefetch();
-  }, [filter]);
+  }, [pathname, searchQuery]); // Listen for page changes & new searches
+
+  // Updates checkboxes when products arrive
+  useEffect(() => {
+    if (products.length > 0) {
+      // Extract available brands & types from products
+      const availableBrands = [...new Set(products.map((p) => p.brand))];
+      const availableTypes = [...new Set(products.map((p) => p.type))];
+
+      setFilter((prev) => ({
+        ...prev,
+        brand: prev.brand.filter((b) => availableBrands.includes(b)), // Only keep brands that exist in results
+        type: prev.type.filter((t) => availableTypes.includes(t)), // Only keep types that exist in results
+      }));
+    } else {
+      // If no products are found, reset brand & type filters
+      setFilter((prev) => ({
+        ...prev,
+        brand: RESET_FILTERS.brand,
+        type: RESET_FILTERS.type,
+      }));
+    }
+  }, [products]); // Runs whenever products change
 
   return (
-    <FiltersContext.Provider value={{ filter, setFilter, products, debouncedRefetch }}>
+    <FiltersContext.Provider value={{ filter, setFilter, searchQuery, products, debouncedRefetch }}>
       {children}
     </FiltersContext.Provider>
   );

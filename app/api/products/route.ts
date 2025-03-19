@@ -31,20 +31,20 @@ export async function POST(req: NextRequest) {
 
         console.log("Received filter from frontend:", JSON.stringify(body.filter, null, 2));
 
-        // ✅ Correctly parse filter
+        // Correctly parse filter
         const { type, price, brand, sort } = ProductFilterValidator.parse(body.filter);
-        const [minPrice, maxPrice] = price; // ✅ Extract price range
+        const [minPrice, maxPrice] = price; // Extract price range
+        const searchQuery = body.searchQuery?.trim(); // Get searchquery and only apply if there's a real query
+
 
         if (type.length === 0 || brand.length === 0) {
-            console.log("❌ No type or brand selected → Returning empty array.");
-
             return new Response(JSON.stringify([]), {
               status: 200,
               headers: { "Content-Type": "application/json" },
             });
           }
 
-        // ✅ Build MongoDB query object
+        // Build MongoDB query object
         const filter: any = {};
 
         if (type.length > 0) {
@@ -55,11 +55,13 @@ export async function POST(req: NextRequest) {
             filter.brand = { $in: brand };
         }
 
-        filter.price = { $gte: minPrice, $lte: maxPrice }; // ✅ Correct price filtering
+        filter.price = { $gte: minPrice, $lte: maxPrice }; // Correct price filtering
 
-        console.log("MongoDB query:", JSON.stringify(filter, null, 2)); // ✅ Debugging
+        if (searchQuery && searchQuery.length > 0) {
+            filter.name = { $regex: new RegExp(searchQuery, "i") }; // Case-insensitive search
+        }
 
-        // ✅ Determine sorting order
+        // Determine sorting order
         const sortOption: Record<string, 1 | -1> = {};
         if (sort === "price-asc") {
             sortOption.price = 1; // Ascending
@@ -67,15 +69,13 @@ export async function POST(req: NextRequest) {
             sortOption.price = -1; // Descending
         }
 
-        // ✅ Fetch filtered & sorted products from MongoDB
+        // Fetch filtered & sorted products from MongoDB
         const products = await db
             .collection("products")
             .find(filter)
             .sort(sortOption)
-            .limit(12)
+            .limit(25)
             .toArray();
-
-        console.log("Products found:", products.length); // ✅ Debugging
 
         return new Response(JSON.stringify(products), {
             status: 200,

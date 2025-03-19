@@ -6,27 +6,6 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { cn } from "@/lib/utils";
 
-// Function to highlight typed letters in suggestions
-function highlightMatch(text: string, query: string): React.ReactNode {
-  if (!query) return text;
-  // Safely escape any regex special characters in the query:
-  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`(${escapedQuery})`, "gi"); // gi stand for case insensitive
-  // Split the text around the matched parts
-  const parts = text.split(regex);
-
-  // Map each piece back, wrapping the matched parts in a <span>
-  return parts.map((part, index) =>
-    part.toLowerCase() === query.toLowerCase() ? (
-      <span key={index} className="text-[var(--primary)] font-bold">
-        {part}
-      </span>
-    ) : (
-      part
-    )
-  );
-}
-
 const Searchbar = () => {
   const [searchValue, setSearchValue] = useState("");
   const [activeSearch, setActiveSearch] = useState<string[]>([]);
@@ -36,6 +15,27 @@ const Searchbar = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+
+  // Function to highlight typed letters in suggestions
+  const highlightMatch = (text: string, query: string) => {
+    if (!query) return text;
+    // Safely escape any regex special characters in the query:
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`(${escapedQuery})`, "gi"); // gi stand for case insensitive
+    // Split the text around the matched parts
+    const parts = text.split(regex);
+
+    // Map each piece back, wrapping the matched parts in a <span>
+    return parts.map((part, index) =>
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={index} className="text-[var(--primary)] font-bold">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
 
   // API call for productNames for suggestion menu only once on mount
   useEffect(() => {
@@ -112,6 +112,9 @@ const Searchbar = () => {
     } else if (e.key === "Enter" && selectedIndex >= 0) {
       e.preventDefault();
       handleSuggestionClick(activeSearch[selectedIndex]);
+    }
+    if (e.key === "Escape") {
+      setActiveSearch([]);
     }
   };
 
