@@ -2,12 +2,13 @@
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import Searchbar from "@/components/ui/Searchbar";
-import ProductsList from "@/components/ui/product-list";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Product } from "@/lib/validators/product-validator";
 import { SORT_OPTIONS } from "@/components/FiltersContext";
+import ProductCard from "@/components/Products/ProductCard";
+import EmptySearchState from "@/components/Products/EmptySearchState";
 
 // TO-DO: Fix bug that empty searchbar leaves traces of previous search in the page
 
@@ -121,9 +122,7 @@ export default function Results() {
           </DropdownMenu>
         </div>
 
-        <h1 className="ml-4 text-white text-2xl">
-          Sorry, we can't find <span className="text-[var(--primary)] text-2xl">{name}</span>
-        </h1>
+        <EmptySearchState name={name} />
       </main>
     );
 
@@ -167,8 +166,15 @@ export default function Results() {
       <h1 className="text-white text-2xl">
         Results for <span className="text-[var(--primary)] text-2xl underlined">{name}</span>
       </h1>
-
-      <ProductsList products={products} />
+      <div className="block">
+        <div className="m-4 grid gap-x-4 gap-y-8 lg:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] md:grid-cols-3 sm:grid-cols-3 grid-cols-3">
+          {products === null
+            ? // Show skeletons while loading
+              new Array(12).map((_, i) => <ProductSkeleton key={i} />)
+            : // Render product cards
+              products.map((product) => <ProductCard key={product.id} product={product} />)}
+        </div>
+      </div>
     </main>
   );
 }
