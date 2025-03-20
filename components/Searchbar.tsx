@@ -104,6 +104,7 @@ const Searchbar = () => {
         handleSuggestionClick(activeSearch[selectedIndex]); // Select from dropdown
       }
       setActiveSearch([]); // Close dropdown but keep text
+      debouncedHandleSearchSubmit(e);
     } else if (e.key === "Escape") {
       setActiveSearch([]); // Close dropdown but keep text
     }

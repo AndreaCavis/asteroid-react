@@ -1,7 +1,7 @@
 "use client";
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion";
-import { Slider } from "./slider";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
+import { Slider } from "./ui/slider";
 import { cn } from "@/lib/utils";
 import { useFilters } from "@/components/FiltersContext"; // ✅ Use filters from global context
 import {
