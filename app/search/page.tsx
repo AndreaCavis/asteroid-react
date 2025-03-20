@@ -2,7 +2,7 @@
 
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import Searchbar from "@/components/ui/Searchbar";
+import Searchbar from "@/components/Searchbar";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
