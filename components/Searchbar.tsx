@@ -128,23 +128,6 @@ const Searchbar = () => {
     }
   }, [activeSearch]);
 
-  const handleClickOutside = (e: React.MouseEvent) => {
-    // Prevent triggering onBlur when clicking inside the suggestions
-    e.stopPropagation();
-  };
-
-  // Close suggestion menu when clicking out of searchbar
-  // useEffect(() => {
-  //   function handleClickOutside(event: MouseEvent) {
-  //     if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
-  //       setActiveSearch([]); // Close suggestions only
-  //     }
-  //   }
-
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => document.removeEventListener("mousedown", handleClickOutside);
-  // }, []);
-
   return (
     <div className="flex justify-center w-1/2 ">
       <form className="flex-none relative w-full">
@@ -172,12 +155,7 @@ const Searchbar = () => {
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
-            <div
-              className="absolute z-50 top-24 bg-black rounded-md text-[var(--accent-foreground)] w-full flex flex-col gap-2"
-              // onClick={() => {
-              //   handleClickOutside;
-              // }}
-            >
+            <div className="absolute z-50 top-24 bg-black rounded-md text-[var(--accent-foreground)] w-full flex flex-col gap-2">
               {activeSearch.map((item, index) => (
                 <span
                   key={index}
