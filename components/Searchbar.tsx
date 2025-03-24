@@ -98,13 +98,12 @@ const Searchbar = () => {
     } else if (e.key === "ArrowUp") {
       e.preventDefault(); // Prevent page scrolling
       setSelectedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-    } else if (e.key === "Enter") {
+    } else if (e.key === "Enter" && selectedIndex >= 0) {
       e.preventDefault();
-      if (selectedIndex >= 0) {
-        handleSuggestionClick(activeSearch[selectedIndex]); // Select from dropdown
-      }
+      handleSuggestionClick(activeSearch[selectedIndex]); // Select from dropdown
+
       setActiveSearch([]); // Close dropdown but keep text
-      debouncedHandleSearchSubmit(e);
+      // debouncedHandleSearchSubmit(e);
     } else if (e.key === "Escape") {
       setActiveSearch([]); // Close dropdown but keep text
     }
@@ -129,17 +128,22 @@ const Searchbar = () => {
     }
   }, [activeSearch]);
 
-  // Close suggestion menu when clicking out of searchbar
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
-        setActiveSearch([]); // Close suggestions only
-      }
-    }
+  const handleClickOutside = (e: React.MouseEvent) => {
+    // Prevent triggering onBlur when clicking inside the suggestions
+    e.stopPropagation();
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // Close suggestion menu when clicking out of searchbar
+  // useEffect(() => {
+  //   function handleClickOutside(event: MouseEvent) {
+  //     if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
+  //       setActiveSearch([]); // Close suggestions only
+  //     }
+  //   }
+
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
   return (
     <div className="flex justify-center w-1/2 ">
@@ -153,6 +157,13 @@ const Searchbar = () => {
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleChange(e)}
             onKeyDown={handleKeyDown} // Listen to keydown event
+            onBlur={() => {
+              setTimeout(() => {
+                if (activeSearch) {
+                  setActiveSearch([]);
+                }
+              }, 100); // delay to let the onClick function in the suggestion menu to be triggered
+            }}
           />
           <button
             className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
@@ -161,7 +172,12 @@ const Searchbar = () => {
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
-            <div className="absolute z-50 top-24 bg-black rounded-md text-[var(--accent-foreground)] w-full flex flex-col gap-2">
+            <div
+              className="absolute z-50 top-24 bg-black rounded-md text-[var(--accent-foreground)] w-full flex flex-col gap-2"
+              // onClick={() => {
+              //   handleClickOutside;
+              // }}
+            >
               {activeSearch.map((item, index) => (
                 <span
                   key={index}
