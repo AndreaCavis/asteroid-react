@@ -123,7 +123,7 @@ const Searchbar = () => {
 
   // Ensure selectedIndex is within bounds when activeSearch updates
   useEffect(() => {
-    if (selectedIndex >= activeSearch.length) {
+    if (selectedIndex >= activeSearch.length && activeSearch.length > 0) {
       setSelectedIndex(activeSearch.length - 1);
     }
   }, [activeSearch]);
