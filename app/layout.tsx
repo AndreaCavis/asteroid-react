@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { FiltersProvider } from "@/components/FiltersContext";
-import Sidebar from "@/components/ui/Sidebar";
-import Navbar from "@/components/ui/Navbar";
+import Sidebar from "@/components/Sidebar";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Asteroid",
@@ -16,6 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+      </head>
       <body className="min-h-screen flex flex-col">
         <title>Asteroid</title>
         <Navbar />
