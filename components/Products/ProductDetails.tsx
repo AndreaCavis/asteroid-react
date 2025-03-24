@@ -37,7 +37,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
           <h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold mb-4">{product.brand}</h1>
           <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold mb-6">{product.name}</h2>
           <p className="lg:text-2xl md:text-xl sm:text-lg text-base text-[var(--accent-foreground)] mb-6">
-            ${product.price}
+            £{product.price}
           </p>
           <h3 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold mb-4">Suggested Use</h3>
           <p className="lg:text-xl md:text-lg sm:text-base text-sm text-[var(--accent-foreground)]">
