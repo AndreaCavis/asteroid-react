@@ -100,7 +100,6 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
       const response = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ filter }),
         body: JSON.stringify({
           filter: {
             sort: filter.sort,
