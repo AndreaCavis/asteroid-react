@@ -77,7 +77,6 @@ const FiltersContext = createContext<FiltersContextType | null>(null);
 
 export const FiltersProvider = ({ children }: { children: ReactNode }) => {
   const searchParamsFilter = useSearchParams();
-  const pathnameFilter = usePathname();
 
   const searchQuery = searchParamsFilter.get("query") || ""; // Get search query from URL
 
@@ -150,14 +149,15 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
         brand: prev.brand.filter((b) => availableBrands.includes(b)), // Only keep brands that exist in results
         type: prev.type.filter((t) => availableTypes.includes(t)), // Only keep types that exist in results
       }));
-    } else {
-      // If no products are found, reset brand & type filters
-      setFilter((prev) => ({
-        ...prev,
-        brand: RESET_FILTERS.brand,
-        type: RESET_FILTERS.type,
-      }));
     }
+    // else {
+    //   // If no products are found, reset brand & type filters
+    //   setFilter((prev) => ({
+    //     ...prev,
+    //     brand: RESET_FILTERS.brand,
+    //     type: RESET_FILTERS.type,
+    //   }));
+    // }
   }, [products]); // Runs whenever products change
 
   return (
