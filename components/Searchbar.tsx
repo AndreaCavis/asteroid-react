@@ -98,12 +98,18 @@ const Searchbar = () => {
     } else if (e.key === "ArrowUp") {
       e.preventDefault(); // Prevent page scrolling
       setSelectedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
-    } else if (e.key === "Enter" && selectedIndex >= 0) {
+    } else if (e.key === "Enter") {
       e.preventDefault();
-      handleSuggestionClick(activeSearch[selectedIndex]); // Select from dropdown
 
-      setActiveSearch([]); // Close dropdown but keep text
-      // debouncedHandleSearchSubmit(e);
+      if (selectedIndex >= 0 && activeSearch.length > 0) {
+        // User pressed Enter on a dropdown suggestion
+        handleSuggestionClick(activeSearch[selectedIndex]);
+      } else {
+        // User pressed Enter normally -> Perform search
+        debouncedHandleSearchSubmit(e);
+      }
+
+      setActiveSearch([]); // Close dropdown
     } else if (e.key === "Escape") {
       setActiveSearch([]); // Close dropdown but keep text
     }
@@ -116,6 +122,7 @@ const Searchbar = () => {
     // Navigate to the results page
     const params = new URLSearchParams();
     params.set("query", searchValue);
+    console.log("✅ Navigating to:", `/search/?${params.toString()}`);
     router.push(`/search/?${params.toString()}`);
 
     setActiveSearch([]); // Close dropdown but keep search text
