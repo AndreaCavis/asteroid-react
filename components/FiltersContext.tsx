@@ -67,7 +67,7 @@ export const RESET_FILTERS: ProductState = {
 interface FiltersContextType {
   filter: ProductState;
   setFilter: React.Dispatch<React.SetStateAction<ProductState>>;
-  searchQuery: string; // ✅ Store searchQuery separately
+  searchQuery: string; // Store searchQuery separately
   products: Product[];
   debouncedRefetch: () => void;
 }
