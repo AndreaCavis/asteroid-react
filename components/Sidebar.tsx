@@ -17,7 +17,7 @@ const Sidebar = () => {
   const { filter, setFilter, debouncedRefetch } = useFilters(); // Get state & updater from context
   const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
 
-  // console.log(filter);
+  console.log(filter);
 
   // array filter (no price) handler
   const applyArrayFilters = ({ category, value }: { category: "type" | "brand"; value: string }) => {
