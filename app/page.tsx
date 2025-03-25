@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { RESET_FILTERS, SORT_OPTIONS, useFilters } from "@/components/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
 import EmptyState from "@/components/Products/EmptyState";
+import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
 
 export default function Home() {
   const { products, debouncedRefetch, filter, setFilter } = useFilters(); // Get global products, filter, and refetch
@@ -58,13 +59,12 @@ export default function Home() {
 
       {/* PRODUCTS grid */}
       <div className="m-4 grid gap-x-4 gap-y-8 lg:grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] md:grid-cols-3 sm:grid-cols-3 grid-cols-3">
-        {products && products.length === 0 ? (
-          <EmptyState />
-        ) : products ? ( // Show skeletons while loading
+        {products.length > 0 ? (
           products.map((product) => <ProductCard key={product.id} product={product} />)
+        ) : filter.brand.length === 0 || filter.type.length === 0 ? (
+          <EmptyState />
         ) : (
-          // Render product cards
-          new Array(12).map((_, i) => <ProductSkeleton key={i} />)
+          Array.from({ length: 12 }, (_, i) => <ProductCardSkeleton key={i} />)
         )}
       </div>
     </main>
