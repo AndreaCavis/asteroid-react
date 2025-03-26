@@ -1,10 +1,11 @@
 import { connectToDB } from "../../mongoDB";
 import { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest, context: { params: Promise<{ id: string }> }) {
+
+export async function GET(request: NextRequest, {params}: { params: Promise<{id: string}> }) {
     const { db } = await connectToDB();
     
-    const resolvedParams = await context.params; // ✅ Explicitly await params
+    const resolvedParams = await params; // ✅ Explicitly await params
     const productID = resolvedParams.id; // ✅ Now we can safely use it
 
     try {

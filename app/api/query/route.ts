@@ -5,8 +5,9 @@ type Params = {
     name: string;
 }
 
-export async function GET(request: NextRequest, { params }: { params: Params}){
+export async function GET(request: NextRequest){
     const { db } = await connectToDB();
+
     const searchParams = request.nextUrl.searchParams;
     const searchQuery = searchParams.get("search");
 
