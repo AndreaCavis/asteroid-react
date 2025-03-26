@@ -150,14 +150,6 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
         type: prev.type.filter((t) => availableTypes.includes(t)), // Only keep types that exist in results
       }));
     }
-    // else {
-    //   // If no products are found, reset brand & type filters
-    //   setFilter((prev) => ({
-    //     ...prev,
-    //     brand: RESET_FILTERS.brand,
-    //     type: RESET_FILTERS.type,
-    //   }));
-    // }
   }, [products]); // Runs whenever products change
 
   return (

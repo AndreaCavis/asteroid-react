@@ -24,7 +24,7 @@ export default function Results() {
   }, [searchQuery]);
 
   return (
-    <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main className="mx-auto pt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="flex items-center">
         <div className="flex-1 flex justify-center">
           <Searchbar />

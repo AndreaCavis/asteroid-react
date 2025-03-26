@@ -23,7 +23,7 @@ export default function RootLayout({
         <title>Asteroid</title>
         <Navbar />
         <FiltersProvider>
-          <div className="flex flex-1 items-stretch lg:pt-32 md:pt-24 sm:pt-16 pt-16">
+          <div className="flex flex-1 items-stretch lg:pt-24 md:pt-20 sm:pt-16 pt-12">
             <Sidebar />
             <div className="flex-grow">{children}</div>
           </div>

@@ -41,7 +41,7 @@ const ProductDetailsSkeleton = () => {
       <div className="flex">
         <div
           onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-stone-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl hover:text-current animate-pulse"
+          className="mt-4 mr-auto ml-12 text-stone-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl animate-pulse"
         >
           <FaArrowLeftLong />
         </div>
