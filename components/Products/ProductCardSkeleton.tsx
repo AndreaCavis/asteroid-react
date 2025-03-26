@@ -1,6 +1,6 @@
 const ProductCardSkeleton = () => {
   return (
-    <div className="bg-none rounded-md lg:w-52 md:w-44 sm:w-32 w-24 animate-pulse">
+    <main className="bg-none rounded-md lg:w-52 md:w-44 sm:w-32 w-24 animate-pulse">
       {/* Image Skeleton */}
       <div className="flex justify-center bg-stone-800 rounded-md lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24" />
 
@@ -10,7 +10,7 @@ const ProductCardSkeleton = () => {
         <div className="h-4 bg-stone-800 rounded-md mb-1 w-2/3" />
         <div className="h-4 bg-stone-800 rounded-md w-1/2" />
       </div>
-    </div>
+    </main>
   );
 };
 

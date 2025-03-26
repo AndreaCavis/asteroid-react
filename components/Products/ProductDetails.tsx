@@ -8,7 +8,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
   const router = useRouter();
 
   return (
-    <>
+    <main>
       {/* Back Button */}
       <div className="flex">
         <div
@@ -45,7 +45,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
           </p>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -36,7 +36,7 @@ const ProductDetailsSkeleton = () => {
   const router = useRouter();
 
   return (
-    <>
+    <main>
       {/* Back Button */}
       <div className="flex">
         <div
@@ -63,7 +63,7 @@ const ProductDetailsSkeleton = () => {
           <div className="lg:h-6 md:h-5 sm:h-4 h-3 bg-stone-800 rounded-md w-3/4 animate-pulse"></div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function NotFoundPage() {
   return (
-    <div className="flex mx-auto flex-col items-center pt-4">
+    <main className="flex mx-auto flex-col items-center pt-4">
       <h1 className="lg:text-8xl md:text-6xl sm:text-4xl text-2xl font-bold mb-6 hover:scale-110 duration-300 ease-in">
         404
       </h1>
@@ -20,6 +20,6 @@ export default function NotFoundPage() {
         height={256}
         className="lg:h-64 md:h-56 sm:h-52 h-48 lg:w-64 md:w-56 sm:w-52 w-48"
       />
-    </div>
+    </main>
   );
 }
