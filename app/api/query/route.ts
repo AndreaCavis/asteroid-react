@@ -1,9 +1,6 @@
 import { connectToDB } from "../mongoDB";
 import { NextRequest } from "next/server";
 
-type Params = {
-    name: string;
-}
 
 export async function GET(request: NextRequest){
     const { db } = await connectToDB();
