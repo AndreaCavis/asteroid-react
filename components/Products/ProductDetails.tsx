@@ -13,7 +13,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
       <div className="flex">
         <div
           onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-[var(--accent-foreground)] lg:text-4xl md:text-3xl sm:text-2xl text-xl hover:text-current"
+          className="mt-4 mr-auto ml-12 text-accent-foreground lg:text-4xl md:text-3xl sm:text-2xl text-xl hover:text-current"
         >
           <FaArrowLeftLong />
         </div>
@@ -36,13 +36,9 @@ const ProductDetails = ({ product }: { product: Product }) => {
         <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 lg:mt-0">
           <h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold mb-4">{product.brand}</h1>
           <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold mb-6">{product.name}</h2>
-          <p className="lg:text-2xl md:text-xl sm:text-lg text-base text-[var(--accent-foreground)] mb-6">
-            £{product.price}
-          </p>
+          <p className="lg:text-2xl md:text-xl sm:text-lg text-base text-accent-foreground mb-6">£{product.price}</p>
           <h3 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold mb-4">Suggested Use</h3>
-          <p className="lg:text-xl md:text-lg sm:text-base text-sm text-[var(--accent-foreground)]">
-            {product.suggested_use}
-          </p>
+          <p className="lg:text-xl md:text-lg sm:text-base text-sm text-accent-foreground">{product.suggested_use}</p>
         </div>
       </div>
     </main>

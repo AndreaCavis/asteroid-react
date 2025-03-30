@@ -20,9 +20,9 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
       <div className="p-2 lg:w-52 md:w-44 sm:w-32 w-24 lg:text-lg md:text-base sm:text-sm text-xs">
         <h2 className="lg:text-xl md:text-lg sm:text-base text-sm font-semibold">{product.name}</h2>
-        <h3 className="text-[var(--accent-foreground)] font-normal mb-1">{product.brand}</h3>
-        <p className="text-[var(--primary)] font-semibold">
-          <span className="text-[var(--accent-foreground)]">£</span> {product.price}
+        <h3 className="text-accent-foreground font-normal mb-1">{product.brand}</h3>
+        <p className="text-primary font-semibold">
+          <span className="text-accent-foreground">£</span> {product.price}
         </p>
       </div>
     </Link>

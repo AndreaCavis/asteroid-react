@@ -7,7 +7,7 @@ export default function NotFoundPage() {
       <h1 className="lg:text-8xl md:text-6xl sm:text-4xl text-2xl font-bold mb-6 hover:scale-110 duration-300 ease-in">
         404
       </h1>
-      <h2 className="lg:text-4xl md:text-2xl sm:text-lg text-base text-[var(--accent-foreground)] font-normal mb-4 text-center">
+      <h2 className="lg:text-4xl md:text-2xl sm:text-lg text-base text-accent-foreground font-normal mb-4 text-center">
         Sorry, an asteroid destroyed this page. It can't be found anymore.
       </h2>
       <Link href={"/"} className="lg:text-4xl md:text-2xl sm:text-lg text-base underlined">

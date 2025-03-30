@@ -22,8 +22,8 @@ export default function Home() {
   return (
     <main className="mx-auto max-w-7xl pt-4 px-4 sm:px-6 lg:px-8">
       <div className="flex items-baseline justify-between border-b-2 border-stone-600 pb-4">
-        <h1 className="font-semibold tracking-tight text-[var(--accent-foreground)] lg:text-4xl md:text-3xl sm:text-2xl text-xl ">
-          Find the <span className="text-[var(--primary)] underlined">supplements</span> you're looking for
+        <h1 className="font-semibold tracking-tight text-accent-foreground lg:text-4xl md:text-3xl sm:text-2xl text-xl ">
+          Find the <span className="text-primary underlined">supplements</span> you're looking for
         </h1>
       </div>
       <div className="flex items-center">
@@ -31,16 +31,16 @@ export default function Home() {
           <Searchbar />
         </div>
         <DropdownMenu>
-          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-stone-400 hover:text-[var(--accent-foreground)]">
+          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-stone-400 hover:text-accent-foreground">
             Sort
-            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[var(--primary)]" />
+            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-primary" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {SORT_OPTIONS.map((option) => (
               <button
                 key={option.label}
                 className={cn("text-left w-full block px-4 py-2", {
-                  "text-[var(--accent-foreground)] bg-stone-800 rounded": option.value === filter.sort,
+                  "text-accent-foreground bg-stone-800 rounded": option.value === filter.sort,
                   "text-gray-400": option.value !== filter.sort,
                 })}
                 onClick={() => {
