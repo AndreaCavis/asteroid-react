@@ -1,19 +1,11 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 const ProductDetailsSkeleton = () => {
-  const router = useRouter();
-
   return (
     <main>
       {/* Back Button */}
       <div className="flex">
-        <div
-          onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-stone-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl animate-pulse"
-        >
+        <div className="mt-4 mr-auto ml-12 text-stone-500 lg:text-4xl md:text-3xl sm:text-2xl text-xl animate-pulse">
           <FaArrowLeftLong />
         </div>
       </div>
