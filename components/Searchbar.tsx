@@ -28,7 +28,7 @@ const Searchbar = () => {
     // Map each piece back, wrapping the matched parts in a <span>
     return parts.map((part, index) =>
       part.toLowerCase() === query.toLowerCase() ? (
-        <span key={index} className="text-[var(--primary)] font-bold">
+        <span key={index} className="text-primary font-bold">
           {part}
         </span>
       ) : (
@@ -143,7 +143,7 @@ const Searchbar = () => {
             type="search"
             placeholder="Search here..."
             ref={inputRef}
-            className="w-full my-8 p-3 rounded-full bg-transparent text-[var(--accent-foreground)] search-shadow"
+            className="w-full my-8 p-3 rounded-full bg-transparent text-accent-foreground search-shadow"
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleChange(e)}
             onKeyDown={handleKeyDown} // Listen to keydown event
@@ -162,7 +162,7 @@ const Searchbar = () => {
             <IoSearch />
           </button>
           {activeSearch.length > 0 && (
-            <div className="absolute z-50 top-24 bg-black rounded-md text-[var(--accent-foreground)] w-full flex flex-col gap-2">
+            <div className="absolute z-50 top-24 bg-black rounded-md text-accent-foreground w-full flex flex-col gap-2">
               {activeSearch.map((item, index) => (
                 <span
                   key={index}

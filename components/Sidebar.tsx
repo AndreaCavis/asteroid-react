@@ -46,7 +46,7 @@ const Sidebar = () => {
         {/* SORT filters */}
         <AccordionItem value="sort">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
               Sort
             </span>
           </AccordionTrigger>
@@ -70,7 +70,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`sort-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -83,7 +83,7 @@ const Sidebar = () => {
         {/* SUPPLEMENT (type) filters (bcaa, creatine, etc) */}
         <AccordionItem value="type">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
               Supplement
             </span>
           </AccordionTrigger>
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -118,9 +118,7 @@ const Sidebar = () => {
         {/* BRAND filters */}
         <AccordionItem value="brand">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] text-lg">
-              Brand
-            </span>
+            <span className="font-medium text-accent-foreground group-hover:text-primary text-lg">Brand</span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -140,7 +138,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`brand-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -153,9 +151,7 @@ const Sidebar = () => {
         {/* PRICE filters */}
         <AccordionItem value="price">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-[var(--accent-foreground)] group-hover:text-[var(--primary)] text-lg">
-              Price
-            </span>
+            <span className="font-medium text-accent-foreground group-hover:text-primary text-lg">Price</span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -184,7 +180,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -211,20 +207,20 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-[var(--accent-foreground)] peer-checked:text-[var(--accent-foreground)]"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     Custom
                   </label>
                 </div>
-                <div className="flex justify-between pb-2 text-[var(--accent-foreground)] font-medium lg:text-base md:text-sm sm:text-xs text-xs">
+                <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
                   <p>Price</p>
                   <div>
                     £
-                    <span className="text-[var(--primary)]">
+                    <span className="text-primary">
                       {filter.price.isCustom ? minPrice.toFixed(0) : filter.price.range[0].toFixed(0)}
                     </span>{" "}
                     - £
-                    <span className="text-[var(--primary)]">
+                    <span className="text-primary">
                       {filter.price.isCustom ? maxPrice.toFixed(0) : filter.price.range[1].toFixed(0)}
                     </span>
                   </div>
