@@ -25,38 +25,8 @@ export default function Results() {
 
   return (
     <main className="mx-auto pt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center">
-        <div className="flex-1 flex justify-center">
-          <Searchbar />
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger
-            className="group inline-flex justify-center text-md font-medium text-gray-400 hover:text-white"
-            onClick={() => console.log("dropdown clicked")}
-          >
-            Sort
-            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-[var(--primary)]" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {SORT_OPTIONS.map((option) => (
-              <button
-                key={option.label}
-                className={cn("text-left w-full block px-4 py-2", {
-                  "text-white bg-stone-800": option.value === filter.sort,
-                  "text-gray-400": option.value !== filter.sort,
-                })}
-                onClick={() => {
-                  setFilter((prev) => ({
-                    ...prev,
-                    sort: option.value,
-                  }));
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex justify-center">
+        <Searchbar />
       </div>
 
       {searchQuery && products.length > 0 ? (

@@ -26,35 +26,8 @@ export default function Home() {
           Find the <span className="text-primary underlined">supplements</span> you're looking for
         </h1>
       </div>
-      <div className="flex items-center">
-        <div className="flex-1 flex justify-center">
-          <Searchbar />
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="group inline-flex justify-center text-md font-medium text-stone-400 hover:text-accent-foreground">
-            Sort
-            <ChevronDown className="-mr-1 ml-1 w-5 font-extrabold flex-shrink-0 text-[#ff80ab] group-hover:text-primary" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {SORT_OPTIONS.map((option) => (
-              <button
-                key={option.label}
-                className={cn("text-left w-full block px-4 py-2", {
-                  "text-accent-foreground bg-stone-800 rounded": option.value === filter.sort,
-                  "text-gray-400": option.value !== filter.sort,
-                })}
-                onClick={() => {
-                  setFilter((prev) => ({
-                    ...prev,
-                    sort: option.value,
-                  }));
-                }}
-              >
-                {option.label}
-              </button>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="flex justify-center">
+        <Searchbar />
       </div>
 
       {/* PRODUCTS grid */}
