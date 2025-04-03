@@ -1,12 +1,9 @@
 "use client";
 
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
 import Searchbar from "@/components/Searchbar";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
-import { RESET_FILTERS, SORT_OPTIONS, useFilters } from "@/components/FiltersContext";
+import { useEffect } from "react";
+import { RESET_FILTERS, useFilters } from "@/components/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
 import EmptySearchState from "@/components/Products/EmptySearchState";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
