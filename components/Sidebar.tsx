@@ -46,7 +46,7 @@ const Sidebar = () => {
         {/* SORT filters */}
         <AccordionItem value="sort">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
               Sort
             </span>
           </AccordionTrigger>
@@ -70,7 +70,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`sort-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs  text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -83,7 +83,7 @@ const Sidebar = () => {
         {/* SUPPLEMENT (type) filters (bcaa, creatine, etc) */}
         <AccordionItem value="type">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
               Supplement
             </span>
           </AccordionTrigger>
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -118,7 +118,9 @@ const Sidebar = () => {
         {/* BRAND filters */}
         <AccordionItem value="brand">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-accent-foreground group-hover:text-primary text-lg">Brand</span>
+            <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary text-lg">
+              Brand
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -138,7 +140,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`brand-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -151,7 +153,9 @@ const Sidebar = () => {
         {/* PRICE filters */}
         <AccordionItem value="price">
           <AccordionTrigger className="py-3" defaultValue="item">
-            <span className="font-medium text-accent-foreground group-hover:text-primary text-lg">Price</span>
+            <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary text-lg">
+              Price
+            </span>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="space-y-4">
@@ -180,7 +184,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${optionIdx}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     {option.label}
                   </label>
@@ -207,7 +211,7 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
-                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
                   >
                     Custom
                   </label>
@@ -252,6 +256,7 @@ const Sidebar = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      <div className="pb-10" />
     </div>
   );
 };

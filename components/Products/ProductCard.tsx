@@ -7,7 +7,7 @@ const ProductCard = ({ product }: { product: Product }) => {
     <Link
       key={product.id}
       href={"/products/" + product.id}
-      className="bg-none rounded-md w-52 opacity-75 hover:opacity-100 transition-transform"
+      className="bg-none rounded-md w-52 opacity-75 hover:opacity-100 transition-all duration-300"
     >
       <div className="flex justify-center lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24 overflow-hidden">
         <Image
