@@ -206,12 +206,13 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
-/* Navbar shadow. HANDLE CAREFULLY */
+/* Navbar style and bottom background */
 .navbar-shadow {
   position: fixed;
   width: 100%;
   z-index: 50;
 }
+/*bottom line gradient*/
 .navbar-shadow::after {
   content: "";
   position: absolute;
