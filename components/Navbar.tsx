@@ -3,7 +3,7 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     // semi-transparent nav-bar: bg-gradient-to-b from-black via-black/90 to-black/70
-    <nav className="navbar-shadow fixed top-0 left-0 w-full max-h-24 bg-gradient-to-b from-black via-black/80 to-black/60 z-50">
+    <nav className="navbar-shadow top-0 left-0 w-full max-h-24 backdrop-blur-sm bg-gradient-to-b from-black/50 via-black/60 to-black/50">
       <Link href={"/"}>
         <img
           src={"/asteroid-pink.png"}
