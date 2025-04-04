@@ -8,7 +8,7 @@ export default function NotFoundPage() {
         404
       </h1>
       <h2 className="lg:text-4xl md:text-2xl sm:text-lg text-base text-accent-foreground font-normal mb-4 text-center">
-        Sorry, an asteroid destroyed this page. It can't be found anymore.
+        Sorry, an asteroid destroyed this page. It can't be found anymore :{"("}
       </h2>
       <Link href={"/"} className="lg:text-4xl md:text-2xl sm:text-lg text-base underlined">
         Return to Home
@@ -18,7 +18,7 @@ export default function NotFoundPage() {
         alt={"Asteroid picture"}
         width={256}
         height={256}
-        className="lg:h-64 md:h-56 sm:h-52 h-48 lg:w-64 md:w-56 sm:w-52 w-48 animate-ping"
+        className="lg:h-64 md:h-56 sm:h-52 h-48 lg:w-64 md:w-56 sm:w-52 w-48 hover:animate-ping"
       />
     </main>
   );

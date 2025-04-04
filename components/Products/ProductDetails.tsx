@@ -34,8 +34,10 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
         {/* Text Content */}
         <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 lg:mt-0">
-          <h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold mb-4">{product.brand}</h1>
-          <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold mb-6">{product.name}</h2>
+          <h1 className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold mb-4 text-accent-foreground">
+            {product.name}
+          </h1>
+          <h2 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-bold mb-6">{product.brand}</h2>
           <p className="lg:text-2xl md:text-xl sm:text-lg text-base text-accent-foreground mb-6">£{product.price}</p>
           <h3 className="lg:text-3xl md:text-2xl sm:text-xl text-lg font-semibold mb-4">Suggested Use</h3>
           <p className="lg:text-xl md:text-lg sm:text-base text-sm text-accent-foreground">{product.suggested_use}</p>
