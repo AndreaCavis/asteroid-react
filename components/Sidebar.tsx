@@ -70,7 +70,8 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`sort-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs  text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs  text-stone-400
+                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
                   >
                     {option.label}
                   </label>
@@ -105,7 +106,8 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
                   >
                     {option.label}
                   </label>
@@ -140,7 +142,8 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`brand-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
                   >
                     {option.label}
                   </label>
@@ -184,7 +187,8 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 
+                    peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
                   >
                     {option.label}
                   </label>
@@ -211,7 +215,8 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 peer-hover:text-accent-foreground peer-checked:text-accent-foreground"
+                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
                   >
                     Custom
                   </label>

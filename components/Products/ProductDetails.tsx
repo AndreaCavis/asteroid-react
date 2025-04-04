@@ -13,7 +13,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
       <div className="flex">
         <div
           onClick={() => router.back()}
-          className="mt-4 mr-auto ml-12 text-accent-foreground lg:text-4xl md:text-3xl sm:text-2xl text-xl hover:text-current"
+          className="transition-all duration-300 mt-4 mr-auto ml-12 text-accent-foreground hover:text-primary lg:text-4xl md:text-3xl sm:text-2xl text-xl "
         >
           <FaArrowLeftLong />
         </div>

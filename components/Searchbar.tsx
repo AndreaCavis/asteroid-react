@@ -156,7 +156,7 @@ const Searchbar = () => {
             }}
           />
           <button
-            className="absolute right-0 text-2xl text-[#ff80ab] hover:text-current top-1/2 -translate-y-1/2 p-3 rounded-full"
+            className="transition-all duration-300 absolute right-0 text-2xl text-primary opacity-75 hover:opacity-100 top-1/2 -translate-y-1/2 p-3 rounded-full"
             onClick={(e) => debouncedHandleSearchSubmit(e)}
           >
             <IoSearch />
