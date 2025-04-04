@@ -18,7 +18,7 @@ export default function NotFoundPage() {
         alt={"Asteroid picture"}
         width={256}
         height={256}
-        className="lg:h-64 md:h-56 sm:h-52 h-48 lg:w-64 md:w-56 sm:w-52 w-48"
+        className="lg:h-64 md:h-56 sm:h-52 h-48 lg:w-64 md:w-56 sm:w-52 w-48 animate-ping"
       />
     </main>
   );
