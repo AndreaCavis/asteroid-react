@@ -1,7 +1,7 @@
 "use client";
 
 import NotFoundPage from "@/app/not-found";
-import { useParams } from "next/navigation"; // use-client only
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import React from "react";
 import ProductDetailsSkeleton from "@/components/Products/ProductDetailsSkeleton";

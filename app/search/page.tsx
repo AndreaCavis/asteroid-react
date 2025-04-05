@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { RESET_FILTERS, useFilters } from "@/components/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
-import EmptySearchState from "@/components/Products/EmptySearchState";
+import EmptyState from "@/components/Products/EmptyState";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
 
 export default function Results() {
@@ -34,7 +34,7 @@ export default function Results() {
 
       {!searchQuery ? null : products && products.length === 0 ? (
         <div className="flex justify-center">
-          <EmptySearchState name={searchQuery} />
+          <EmptyState name={searchQuery} />
         </div>
       ) : (
         <div className="block">

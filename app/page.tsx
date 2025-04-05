@@ -4,8 +4,8 @@ import Searchbar from "../components/Searchbar";
 import { useEffect } from "react";
 import { RESET_FILTERS, useFilters } from "@/components/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
-import EmptyState from "@/components/Products/EmptyState";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
+import EmptyState from "@/components/Products/EmptyState";
 
 export default function Home() {
   const { products, debouncedRefetch, filter, setFilter } = useFilters(); // Get global products, filter, and refetch
@@ -32,7 +32,7 @@ export default function Home() {
         {products.length > 0 ? (
           products.map((product) => <ProductCard key={product.id} product={product} />)
         ) : filter.brand.length === 0 || filter.type.length === 0 ? (
-          <EmptyState />
+          <EmptyState name="" />
         ) : (
           Array.from({ length: 12 }, (_, i) => <ProductCardSkeleton key={i} />)
         )}
