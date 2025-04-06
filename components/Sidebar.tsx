@@ -221,17 +221,19 @@ const Sidebar = () => {
                     Custom
                   </label>
                 </div>
-                <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
-                  <p>Price</p>
-                  <div>
-                    £
-                    <span className="text-primary">
-                      {filter.price.isCustom ? minPrice.toFixed(0) : filter.price.range[0].toFixed(0)}
-                    </span>{" "}
-                    - £
-                    <span className="text-primary">
-                      {filter.price.isCustom ? maxPrice.toFixed(0) : filter.price.range[1].toFixed(0)}
-                    </span>
+                <div className={cn({ "opacity-50": !filter.price.isCustom })}>
+                  <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
+                    <p>Price</p>
+                    <div>
+                      £
+                      <span className="text-primary">
+                        {filter.price.isCustom ? minPrice.toFixed(0) : filter.price.range[0].toFixed(0)}
+                      </span>{" "}
+                      - £
+                      <span className="text-primary">
+                        {filter.price.isCustom ? maxPrice.toFixed(0) : filter.price.range[1].toFixed(0)}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <Slider

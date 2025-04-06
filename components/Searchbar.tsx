@@ -143,7 +143,7 @@ const Searchbar = () => {
             type="search"
             placeholder="Search here..."
             ref={inputRef}
-            className="w-full my-8 p-3 rounded-full bg-transparent text-accent-foreground search-shadow"
+            className="search-shadow w-full my-8 p-3 rounded-full bg-transparent text-accent-foreground"
             value={searchValue || ""} // searchValue || "" so that is always a string
             onChange={(e) => handleChange(e)}
             onKeyDown={handleKeyDown} // Listen to keydown event
