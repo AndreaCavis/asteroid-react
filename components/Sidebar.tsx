@@ -3,8 +3,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Slider } from "./ui/slider";
 import { cn } from "@/lib/utils";
-import { useFilters } from "@/components/FiltersContext"; // ✅ Use filters from global context
 import {
+  useFilters,
   SORT_FILTERS,
   TYPE_FILTERS,
   BRAND_FILTERS,
