@@ -1,5 +1,5 @@
 import { ProductFilterValidator } from "@/lib/validators/product-validator";
-import { connectToDB } from "../mongoDB";
+import { connectToDB } from "../utils/mongoDB";
 import { NextRequest } from "next/server";
 
 export async function GET() {
