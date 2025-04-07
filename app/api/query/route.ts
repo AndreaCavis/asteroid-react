@@ -7,8 +7,6 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const searchQuery = searchParams.get("search");
 
-  // const productName = params.name;
-
   try {
     // searchQuery || "" because RegExp does not accept null value
     const products = await db
