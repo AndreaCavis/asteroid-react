@@ -141,7 +141,7 @@ const Searchbar = () => {
         <div>
           <input
             type="search"
-            placeholder="Search here..."
+            placeholder="Search for supplements..."
             ref={inputRef}
             className="search-shadow w-full my-8 p-3 rounded-full bg-transparent text-accent-foreground"
             value={searchValue || ""} // searchValue || "" so that is always a string

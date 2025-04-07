@@ -12,7 +12,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           width={208}
           height={208}
           className="object-fill rounded-md lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24
-          group-hover:opacity-75 scale-90 opacity-50 group-hover:scale-100 transition-all duration-300 ease"
+          group-hover:opacity-100 scale-90 opacity-75 group-hover:scale-100 transition-all duration-300 ease"
         />
       </div>
 
