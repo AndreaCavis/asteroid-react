@@ -61,15 +61,14 @@ const Searchbar = () => {
   const debouncedHandleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
     const query = e.target.value;
+    setSearchValue(query);
+    query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
+    router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
 
     if (!query) {
       setActiveSearch([]);
       return;
     }
-
-    setSearchValue(query);
-    query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
-    router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
     // Filter by name and limit results to 8
     const filteredProducts = allProductNames
       .filter((name) => name.toLowerCase().includes(query.toLowerCase()))

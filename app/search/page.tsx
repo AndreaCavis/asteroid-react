@@ -28,7 +28,7 @@ export default function Results() {
 
       {searchQuery && products.length > 0 ? (
         <h1 className="text-white text-2xl">
-          Results for <span className="text-[var(--primary)] text-2xl underlined">{searchQuery}</span>
+          Results for <span className="text-primary text-2xl underlined">{searchQuery}</span>
         </h1>
       ) : null}
 
