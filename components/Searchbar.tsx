@@ -16,6 +16,20 @@ const Searchbar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
+  // API call for productNames for suggestion menu only once on mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/query?search=");
+        const data = await response.json();
+        setAllProductNames(data.map((product: any) => product.name)); // Store names only
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+
   // Function to highlight typed letters in suggestions
   const highlightMatch = (text: string, query: string) => {
     if (!query) return text;
@@ -37,20 +51,6 @@ const Searchbar = () => {
     );
   };
 
-  // API call for productNames for suggestion menu only once on mount
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("/api/query?search=");
-        const data = await response.json();
-        setAllProductNames(data.map((product: any) => product.name)); // Store names only
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchProducts();
-  }, []);
-
   // Call this before handle search to prevent conflict with debounce callback
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -61,14 +61,15 @@ const Searchbar = () => {
   const debouncedHandleSearch = useDebouncedCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
     const query = e.target.value;
-    setSearchValue(query);
-    query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
-    router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
+
     if (!query) {
       setActiveSearch([]);
       return;
     }
 
+    setSearchValue(query);
+    query ? params.set("query", query) : params.delete("query"); // Set the query parameter to the search text
+    router.replace(`${pathname}?${params.toString()}`); // Update the URL with the new query parameter
     // Filter by name and limit results to 8
     const filteredProducts = allProductNames
       .filter((name) => name.toLowerCase().includes(query.toLowerCase()))
@@ -106,17 +107,15 @@ const Searchbar = () => {
         handleSuggestionClick(activeSearch[selectedIndex]);
       } else {
         // User pressed Enter normally -> Perform search
-        debouncedHandleSearchSubmit(e);
+        onSubmit(e);
       }
 
       setActiveSearch([]); // Close dropdown
-    } else if (e.key === "Escape") {
-      setActiveSearch([]); // Close dropdown but keep text
     }
   };
 
   // Performs the search and goes to the result page
-  const debouncedHandleSearchSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!searchValue.trim()) return;
     // Navigate to the results page
@@ -157,7 +156,7 @@ const Searchbar = () => {
           />
           <button
             className="transition-all duration-300 absolute right-0 text-2xl text-primary opacity-75 hover:opacity-100 top-1/2 -translate-y-1/2 p-3 rounded-full"
-            onClick={(e) => debouncedHandleSearchSubmit(e)}
+            onClick={(e) => onSubmit(e)}
           >
             <IoSearch />
           </button>
