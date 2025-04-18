@@ -134,7 +134,7 @@ const Searchbar = () => {
   }, [activeSearch]);
 
   return (
-    <div className="flex justify-center w-1/2 ">
+    <div className="flex justify-center w-1/2">
       <form className="flex-none relative w-full">
         <div>
           <input
