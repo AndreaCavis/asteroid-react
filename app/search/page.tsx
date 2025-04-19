@@ -22,7 +22,7 @@ export default function Results() {
 
   return (
     <main className="mx-auto pt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-center">
+      <div className="mx-auto w-1/2">
         <Searchbar />
       </div>
 

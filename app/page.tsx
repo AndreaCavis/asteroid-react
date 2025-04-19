@@ -23,7 +23,7 @@ export default function Home() {
           Find the <span className="text-primary underlined">supplements</span> you're looking for
         </h1>
       </div>
-      <div className="flex justify-center w-1/2">
+      <div className="mx-auto w-1/2">
         <Searchbar />
       </div>
 
