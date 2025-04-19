@@ -51,7 +51,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {SORT_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -89,7 +89,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {TYPE_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -125,7 +125,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {BRAND_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -161,7 +161,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {PRICE_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.label} className="flex items-center">
                   <input
