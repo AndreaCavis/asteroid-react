@@ -42,39 +42,44 @@ const ProductDetails = ({ product }: { product: Product }) => {
         </div>
 
         {/* Text Content */}
-        <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 pr-2 lg:mt-0">
+        <div className="group lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 pr-2 lg:mt-0">
           <h1
             className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl
                        font-bold mb-4 text-accent-foreground opacity-80
-                       hover:opacity-100 transition-all duration-700"
+                       hover:opacity-100 transition-all duration-700
+                       group-hover:text-stone-100 group-hover:opacity-90"
           >
             {product.name}
           </h1>
           <h2
             className="lg:text-3xl md:text-2xl sm:text-xl text-lg
                        font-bold mb-6 opacity-80
-                       hover:opacity-100 transition-all duration-700"
+                       hover:opacity-100 transition-all duration-700
+                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-300/90"
           >
             {product.brand}
           </h2>
           <p
             className="lg:text-2xl md:text-xl sm:text-lg text-base
                        text-accent-foreground mb-6 opacity-80
-                       hover:opacity-100 transition-all duration-700"
+                       hover:opacity-100 transition-all duration-700
+                       group-hover:text-stone-100 group-hover:opacity-100"
           >
             £{product.price}
           </p>
           <h3
             className="lg:text-3xl md:text-2xl sm:text-xl text-lg
                        font-semibold mb-4 opacity-80
-                       hover:opacity-100 transition-all duration-700"
+                       hover:opacity-100 transition-all duration-700
+                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-300/100"
           >
             Suggested Use
           </h3>
           <p
             className="lg:text-xl md:text-lg sm:text-base text-sm
                        text-accent-foreground opacity-80
-                       hover:opacity-100 transition-all duration-700"
+                       hover:opacity-100 transition-all duration-700
+                       group-hover:text-stone-100 group-hover:opacity-100"
           >
             {product.suggested_use}
           </p>
