@@ -9,7 +9,6 @@ const ProductCard = ({ product }: { product: Product }) => {
         className="flex justify-center lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24 overflow-hidden
                    rounded-lg scale-90 transition-all duration-300 ease-out
                    group-hover:bg-gradient-to-tr group-hover:from-stone-100/90 group-hover:via-stone-600/70 group-hover:to-stone-950
-                   after:group-hover:bg-gradient-to-tl after:group-hover:from-stone-300/90 after:group-hover:via-stone-600/20
                    group-hover:rounded-md group-hover:scale-100"
       >
         <Image
