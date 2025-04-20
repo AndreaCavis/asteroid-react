@@ -42,7 +42,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
         </div>
 
         {/* Text Content */}
-        <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 lg:mt-0">
+        <div className="lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 pr-2 lg:mt-0">
           <h1
             className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl
                        font-bold mb-4 text-accent-foreground opacity-80
