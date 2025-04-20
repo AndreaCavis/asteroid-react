@@ -7,10 +7,10 @@ const ProductCard = ({ product }: { product: Product }) => {
     <Link key={product.id} href={"/products/" + product.id} className="group bg-none rounded-md w-52">
       <div
         className="flex justify-center lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24 overflow-hidden
-                      rounded-lg transition duration-300   bg-stone-800/10
-                      group-hover:bg-gradient-to-tr group-hover:from-stone-300/90 group-hover:via-stone-300/50 group-hover:to-stone-500/20
-                      after:group-hover:bg-gradient-to-tl after:group-hover:from-stone-300/90 after:group-hover:via-stone-300/50 after:group-hover:to-stone-500/20
-                      group-hover:rounded-md"
+                   rounded-lg scale-90 transition-all duration-300 ease-out
+                   group-hover:bg-gradient-to-tr group-hover:from-stone-100/90 group-hover:via-stone-600/70 group-hover:to-stone-950
+                   after:group-hover:bg-gradient-to-tl after:group-hover:from-stone-300/90 after:group-hover:via-stone-600/20
+                   group-hover:rounded-md group-hover:scale-100"
       >
         <Image
           src={"/" + product.imageUrl}
@@ -18,8 +18,11 @@ const ProductCard = ({ product }: { product: Product }) => {
           width={208}
           height={208}
           className="object-fill lg:w-52 lg:h-52 md:w-44 md:h-44 sm:w-32 sm:h-32 w-24 h-24
-                     opacity-75 scale-95 rounded-md transition-all duration-300 ease
-                     group-hover:opacity-60 group-hover:scale-105"
+                     transition-all ease-out duration-300
+                     border-y-0 border-transparent
+                     group-hover:border-y-4 group-hover:border-background group-hover:border-opacity-60
+                     opacity-60 scale-100 rounded-md 
+                     group-hover:opacity-50 group-hover:scale-100"
         />
       </div>
 
