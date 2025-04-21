@@ -42,7 +42,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
         </div>
 
         {/* Text Content */}
-        <div className="group lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 pr-2 lg:mt-0">
+        <div className="group rounded-sm lg:w-1/2 w-full text-center lg:text-left mt-6 pt-6 pr-2 lg:mt-0">
           <h1
             className="lg:text-5xl md:text-4xl sm:text-3xl text-2xl
                        font-bold mb-4 text-accent-foreground opacity-80
@@ -55,7 +55,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             className="lg:text-3xl md:text-2xl sm:text-xl text-lg
                        font-bold mb-6 opacity-80
                        hover:opacity-100 transition-all duration-700
-                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-300/90"
+                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-200/90"
           >
             {product.brand}
           </h2>

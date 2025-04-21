@@ -37,7 +37,10 @@ const Sidebar = () => {
   const maxPrice = Math.max(filter.price.range[0], filter.price.range[1]);
 
   return (
-    <div className="w-1/5 px-3 border-r-2 border-pink-800/50 flex-none min-h-full">
+    <div
+      className="w-1/5 px-3 border-r-2 border-pink-800/50 flex-none min-h-full
+                    hover:border-sky-300/50"
+    >
       <Accordion
         type="multiple"
         value={openSections}
@@ -46,7 +49,7 @@ const Sidebar = () => {
         {/* SORT filters */}
         <AccordionItem value="sort">
           <AccordionTrigger className="pb-3" defaultValue="item">
-            <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
+            <span className="transition-all duration-300 font-medium text-accent-foreground group-hover:text-primary lg:text-lg md:text-base sm:text-sm text-xs">
               Sort
             </span>
           </AccordionTrigger>
@@ -70,8 +73,10 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`sort-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs  text-stone-400
-                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                               transition-all duration-100
+                               peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
+                               peer-checked:hover:text-sky-blue-300"
                   >
                     {option.label}
                   </label>
@@ -106,8 +111,10 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`type-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
-                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                               transition-all duration-100
+                               peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
+                               peer-checked:hover:text-sky-blue-300"
                   >
                     {option.label}
                   </label>
@@ -142,8 +149,10 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`brand-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
-                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                               transition-all duration-100
+                               peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
+                               peer-checked:hover:text-sky-blue-300"
                   >
                     {option.label}
                   </label>
@@ -187,8 +196,10 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${optionIdx}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400 
-                    peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                               transition-all duration-100
+                               peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
+                               peer-checked:hover:text-sky-blue-300"
                   >
                     {option.label}
                   </label>
@@ -215,15 +226,17 @@ const Sidebar = () => {
                   />
                   <label
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
-                    className="transition-all duration-500 ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
-                     peer-hover:text-accent-foreground peer-checked:text-accent-foreground peer-checked:hover:text-primary-light"
+                    className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
+                    transition-all duration-100
+                    peer-hover:text-accent-foreground peer-checked:hover:text-sky-500 
+                    peer-checked:text-sky-blue-300"
                   >
                     Custom
                   </label>
                 </div>
                 <div className={cn({ "opacity-50": !filter.price.isCustom })}>
                   <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
-                    <p>Price</p>
+                    <p className={cn({ "text-sky-blue-300 hover:text-sky-500": filter.price.isCustom })}>Price</p>
                     <div>
                       £
                       <span className="text-primary">

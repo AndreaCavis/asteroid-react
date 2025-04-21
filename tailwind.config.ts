@@ -25,6 +25,9 @@ export default {
           light: "var(--primary-light)",
           foreground: "var(--primary-foreground)",
         },
+        sky: {
+          blue: { 300: "var(--sky-blue-300)" },
+        },
         secondary: {
           DEFAULT: "var(--secondary)",
           foreground: "var(--secondary-foreground)",

@@ -18,9 +18,20 @@ export default function Home() {
 
   return (
     <main className="mx-auto max-w-7xl pt-4 px-4 sm:px-6 lg:px-8">
-      <div className="flex items-baseline justify-between border-b-2 border-stone-600 pb-4">
-        <h1 className="font-semibold tracking-tight text-accent-foreground lg:text-4xl md:text-3xl sm:text-2xl text-xl ">
-          Find the <span className="text-primary underlined">supplements</span> you're looking for
+      <div className="group flex items-baseline justify-between border-b-2 border-stone-600 pb-4">
+        <h1
+          className="font-semibold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl text-xl
+                     transition-all duration-500 text-accent-foreground
+                     hover:text-ellipsis hover:text-transparent group-hover:text-stone-200/80"
+        >
+          Find the{" "}
+          <span className="text-primary group-hover:text-sky-blue-300 transition-colors duration-500 group supplement-flicker">
+            supplements
+          </span>
+          <span className="text-transparent">
+            <span className="transition-all duration-500 text-accent-foreground"> you're looking for</span>
+          </span>
+          {/* you're looking for */}
         </h1>
       </div>
       <div className="mx-auto w-1/2">
