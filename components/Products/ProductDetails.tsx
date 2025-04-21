@@ -55,7 +55,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             className="lg:text-3xl md:text-2xl sm:text-xl text-lg
                        font-bold mb-6 opacity-80
                        hover:opacity-100 transition-all duration-700
-                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-200/90"
+                       hover:text-ellipsis hover:text-transparent group-hover:text-bluesky-light"
           >
             {product.brand}
           </h2>
@@ -63,7 +63,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             className="lg:text-2xl md:text-xl sm:text-lg text-base
                        text-accent-foreground mb-6 opacity-80
                        hover:opacity-100 transition-all duration-700
-                       group-hover:text-stone-100 group-hover:opacity-100"
+                       group-hover:text-stone-400 group-hover:opacity-100"
           >
             £{product.price}
           </p>
@@ -71,7 +71,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             className="lg:text-3xl md:text-2xl sm:text-xl text-lg
                        font-semibold mb-4 opacity-80
                        hover:opacity-100 transition-all duration-700
-                       hover:text-ellipsis hover:text-transparent group-hover:text-sky-300/100"
+                       hover:text-ellipsis hover:text-transparent group-hover:text-bluesky-light"
           >
             Suggested Use
           </h3>
@@ -79,7 +79,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
             className="lg:text-xl md:text-lg sm:text-base text-sm
                        text-accent-foreground opacity-80
                        hover:opacity-100 transition-all duration-700
-                       group-hover:text-stone-100 group-hover:opacity-100"
+                       group-hover:text-stone-400 group-hover:opacity-100"
           >
             {product.suggested_use}
           </p>

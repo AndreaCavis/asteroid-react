@@ -15,7 +15,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const { filter, setFilter, debouncedRefetch } = useFilters(); // Get state & updater from context
-  const [openSections, setOpenSections] = useState<string[]>(["type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
+  const [openSections, setOpenSections] = useState<string[]>(["sort", "type", "brand"]); // ACCORDION TOGGLE. Add "sort" to open it
 
   console.log(filter);
 
@@ -76,7 +76,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-sky-blue-300"
+                               peer-checked:hover:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -114,7 +114,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-sky-blue-300"
+                               peer-checked:hover:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -152,7 +152,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-sky-blue-300"
+                               peer-checked:hover:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -199,7 +199,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-sky-blue-300"
+                               peer-checked:hover:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -229,14 +229,14 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                     transition-all duration-100
                     peer-hover:text-accent-foreground peer-checked:hover:text-sky-500 
-                    peer-checked:text-sky-blue-300"
+                    peer-checked:text-bluesky-light"
                   >
                     Custom
                   </label>
                 </div>
                 <div className={cn({ "opacity-50": !filter.price.isCustom })}>
                   <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
-                    <p className={cn({ "text-sky-blue-300 hover:text-sky-500": filter.price.isCustom })}>Price</p>
+                    <p className={cn({ "text-bluesky-light hover:text-sky-500": filter.price.isCustom })}>Price</p>
                     <div>
                       £
                       <span className="text-primary">

@@ -17,19 +17,25 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-7xl pt-4 px-4 sm:px-6 lg:px-8">
+    <main className="mx-auto max-w-7xl text-stone-700 pt-4 px-4 sm:px-6 lg:px-8">
       <div className="group flex items-baseline justify-between border-b-2 border-stone-600 pb-4">
         <h1
           className="font-semibold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl text-xl
                      transition-all duration-500 text-accent-foreground
-                     hover:text-ellipsis hover:text-transparent group-hover:text-stone-200/80"
+                     hover:text-ellipsis hover:text-transparent group-hover:text-stone-300/90"
         >
           Find the{" "}
-          <span className="text-primary group-hover:text-sky-blue-300 transition-colors duration-500 group supplement-flicker">
+          <span
+            className="group text-primary transition-colors duration-300
+                           group-hover:text-bluesky group-hover:opacity-80"
+          >
             supplements
           </span>
           <span className="text-transparent">
-            <span className="transition-all duration-500 text-accent-foreground"> you're looking for</span>
+            <span className="transition-all duration-500 text-accent-foreground group-hover:text-stone-200/90">
+              {" "}
+              you're looking for
+            </span>
           </span>
           {/* you're looking for */}
         </h1>

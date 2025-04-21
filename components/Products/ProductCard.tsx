@@ -28,21 +28,25 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="group-hover:opacity-100">
         <div className="p-2 lg:w-52 md:w-44 sm:w-32 w-24 lg:text-lg md:text-base sm:text-sm text-xs">
           <h2
-            className="animated-text transition-opacity duration-200 opacity-75 group-hover:opacity-100 
-          lg:text-xl md:text-lg sm:text-base text-sm font-semibold
-          hover:text-ellipsis hover:text-transparent group-hover:text-sky-400/90"
+            className="animated-text transition-opacity text-primary duration-200 opacity-75 
+                       group-hover:opacity-80 group-hover:text-bluesky
+                       lg:text-xl md:text-lg sm:text-base text-sm font-semibold
+                       hover:text-ellipsis"
           >
             {product.name}
           </h2>
-          <h3 className="transition-all duration-200 opacity-75 group-hover:opacity-100 text-accent-foreground font-normal mb-1">
+          <h3
+            className="transition-all duration-200 opacity-75 text-accent-foreground font-normal mb-1
+                         group-hover:text-stone-200/90 group-hover:opacity-100"
+          >
             {product.brand}
           </h3>
           <div className="transition-colors duration-1000">
             <p
-              className="text-accent-foreground font-semibold opacity-75 transition-all duration-0 group-hover:opacity-100
-                         hover:text-ellipsis hover:text-transparent group-hover:text-sky-200/90"
+              className="text-accent-foreground font-semibold opacity-75 transition-all duration-0 group-hover:opacity-70
+                         hover:text-ellipsis hover:text-transparent group-hover:text-bluesky-light"
             >
-              £ <span className="text-primary group-hover:text-sky-200">{product.price}</span>
+              £ <span className="text-primary group-hover:text-bluesky-light">{product.price}</span>
             </p>
           </div>
         </div>
