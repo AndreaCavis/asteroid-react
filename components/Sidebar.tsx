@@ -15,7 +15,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const { filter, setFilter, debouncedRefetch } = useFilters(); // Get state & updater from context
-  const [openSections, setOpenSections] = useState<string[]>(["sort", "type", "brand"]); // ACCORDION TOGGLE. Add "sort" to open it
+  const [openSections, setOpenSections] = useState<string[]>(["sort", "type", "brand", "price"]); // ACCORDION TOGGLE. Add "sort" to open it
 
   console.log(filter);
 
@@ -39,7 +39,7 @@ const Sidebar = () => {
   return (
     <div
       className="w-1/5 px-3 border-r-2 border-pink-800/50 flex-none min-h-full
-                    hover:border-sky-300/50"
+                    hover:border-sky-500 hover:border-opacity-50"
     >
       <Accordion
         type="multiple"
@@ -54,7 +54,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {SORT_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -94,7 +94,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {TYPE_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -126,13 +126,13 @@ const Sidebar = () => {
 
         {/* BRAND filters */}
         <AccordionItem value="brand">
-          <AccordionTrigger className="py-3" defaultValue="item">
+          <AccordionTrigger className="py-2" defaultValue="item">
             <span className="transition-all duration-500 font-medium text-accent-foreground group-hover:text-primary text-lg">
               Brand
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {BRAND_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.value} className="flex items-center">
                   <input
@@ -170,7 +170,7 @@ const Sidebar = () => {
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {PRICE_FILTERS.options.map((option, optionIdx) => (
                 <li key={option.label} className="flex items-center">
                   <input
@@ -236,7 +236,7 @@ const Sidebar = () => {
                 </div>
                 <div className={cn({ "opacity-50": !filter.price.isCustom })}>
                   <div className="flex justify-between pb-2 text-accent-foreground font-medium lg:text-base md:text-sm sm:text-xs text-xs">
-                    <p className={cn({ "text-bluesky-light hover:text-sky-500": filter.price.isCustom })}>Price</p>
+                    <p className={cn({ "text-bluesky-light hover:text-bluesky": filter.price.isCustom })}>Price</p>
                     <div>
                       £
                       <span className="text-primary">
@@ -276,6 +276,7 @@ const Sidebar = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+      {/* simple bottom spacing to facilitate slider usage */}
       <div className="pb-10" />
     </div>
   );
