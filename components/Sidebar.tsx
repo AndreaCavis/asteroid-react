@@ -252,7 +252,7 @@ const Sidebar = () => {
                 <Slider
                   className={cn({ "opacity-50": !filter.price.isCustom })}
                   disabled={!filter.price.isCustom}
-                  onValueChange={(range) => {
+                  onValueChange={(range: [number, number]) => {
                     const [newMin, newMax] = range;
 
                     setFilter((prev) => ({
