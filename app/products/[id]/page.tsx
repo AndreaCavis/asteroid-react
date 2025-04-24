@@ -19,7 +19,7 @@ export default function ProductDetailsPage() {
 
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/products/${params.id}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products/${params.id}`);
 
         if (response.status === 404) {
           setError(true);

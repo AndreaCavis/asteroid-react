@@ -96,7 +96,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     try {
       const searchQuery = searchParams.get("query") || ""; // Get search term from URL
 
-      const response = await fetch("http://localhost:3000/api/products", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
