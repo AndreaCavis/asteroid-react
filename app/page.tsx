@@ -7,6 +7,8 @@ import ProductCard from "@/components/Products/ProductCard";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
 import EmptyState from "@/components/Products/EmptyState";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const { products, debouncedRefetch, filter, setFilter } = useFilters(); // Get global products, filter, and refetch
 

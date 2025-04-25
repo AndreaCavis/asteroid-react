@@ -8,6 +8,8 @@ import ProductDetailsSkeleton from "@/components/Products/ProductDetailsSkeleton
 import { Product } from "@/lib/validators/product-validator";
 import ProductDetails from "@/components/Products/ProductDetails";
 
+export const dynamic = "force-dynamic";
+
 export default function ProductDetailsPage() {
   //{ params }: { params: { id: string } } removed for useParams()
   const params = useParams();

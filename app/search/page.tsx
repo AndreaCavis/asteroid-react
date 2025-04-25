@@ -8,6 +8,8 @@ import ProductCard from "@/components/Products/ProductCard";
 import EmptyState from "@/components/Products/EmptyState";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
 
+export const dynamic = "force-dynamic";
+
 export default function Results() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("query") || ""; // Extract search query
