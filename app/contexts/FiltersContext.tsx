@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { Product, ProductState } from "@/lib/validators/product-validator";
 import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useSearchParams } from "next/navigation";
+import type { Product, ProductState } from "@/lib/validators/product-validator";
 
 export const SORT_OPTIONS = [
   { value: "none", label: "None" },
@@ -96,7 +96,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
     try {
       const searchQuery = searchParams.get("query") || ""; // Get search term from URL
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products`, {
+      const response = await fetch("/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -111,9 +111,13 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
         }),
       });
 
-      console.log("Response status:", response.status); // Debugging
+      if (!response.ok) {
+        const text = await response.text(); // now it’s the actual response body
+        // now you’ll see the actual error coming from your server
+        throw new Error(`API error ${response.status}: ${text}`);
+      }
 
-      if (!response.ok) throw new Error("Failed to fetch products");
+      console.log("Response status:", response.status); // Debugging
 
       const data: Product[] = await response.json();
       setProducts(data);
