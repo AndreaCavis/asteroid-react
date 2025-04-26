@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ObjectId } from "mongodb";
 
 export const AVAILABLE_TYPES = ["bcaa", "beta alanine", "creatine", "whey protein"] as const;
 
@@ -7,6 +8,7 @@ export const AVAILABLE_BRANDS = ["Optimum Nutrition", "MyProtein", "Yamamoto Nut
 export const AVAILABLE_SORT = ["none", "price-asc", "price-desc"] as const;
 
 export const ProductValidator = z.object({
+  _id: z.custom<ObjectId>((val) => val instanceof ObjectId),
   id: z.string(),
   imageUrl: z.string().regex(/^\/?public\/.+/, "Invalid image path"), // Ensures it starts with 'public/'
   brand: z.string(),
