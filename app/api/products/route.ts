@@ -1,12 +1,15 @@
-import { ProductFilterValidator } from "@/lib/validators/product-validator";
+import { Product, ProductFilterValidator } from "@/lib/validators/product-validator";
 import { connectToDB } from "../utils/mongoDB";
 import { NextRequest } from "next/server";
 
+import type { Filter, Collection } from "mongodb";
+
 export async function GET() {
   const { db } = await connectToDB();
+  const productsCollection = db.collection("products") as Collection<Product>;
 
   try {
-    const products = await db.collection("products").find({}).toArray();
+    const products = await productsCollection.find({}).toArray();
 
     return new Response(JSON.stringify(products), {
       status: 200,
@@ -42,7 +45,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Build MongoDB query object
-    const filter: any = {};
+    const filter: Filter<Product> = {};
 
     if (type.length > 0) {
       filter.type = { $in: type };
@@ -66,8 +69,10 @@ export async function POST(req: NextRequest) {
       sortOption.price = -1; // Descending
     }
 
+    // Create Collection<Products> for TypeScript safety
+    const productsCollection = db.collection("products") as Collection<Product>;
     // Fetch filtered & sorted products from MongoDB
-    const products = await db.collection("products").find(filter).sort(sortOption).limit(25).toArray();
+    const products = await productsCollection.find(filter).sort(sortOption).limit(25).toArray();
 
     return new Response(JSON.stringify(products), {
       status: 200,

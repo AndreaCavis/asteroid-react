@@ -1,5 +1,7 @@
+import { Collection } from "mongodb";
 import { connectToDB } from "../../utils/mongoDB";
 import { NextRequest } from "next/server";
+import { Product } from "@/lib/validators/product-validator";
 
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { db } = await connectToDB();
@@ -9,7 +11,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
   try {
     console.log("Fetching product with ID:", productID);
-    const product = await db.collection("products").findOne({ id: productID });
+
+    const productsCollection = db.collection("products") as Collection<Product>;
+    const product = await productsCollection.findOne({ id: productID });
 
     if (!product) {
       return new Response("Product not found", { status: 404 });
