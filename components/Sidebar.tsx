@@ -10,7 +10,7 @@ import {
   BRAND_FILTERS,
   PRICE_FILTERS,
   DEFAULT_CUSTOM_PRICE,
-} from "@/components/FiltersContext"; // ✅ Import filter constants
+} from "@/app/contexts/FiltersContext"; // ✅ Import filter constants
 import { useState } from "react";
 
 const Sidebar = () => {

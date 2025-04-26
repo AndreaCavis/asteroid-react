@@ -2,12 +2,10 @@
 
 import Searchbar from "../components/Searchbar";
 import { useEffect } from "react";
-import { RESET_FILTERS, useFilters } from "@/components/FiltersContext";
+import { RESET_FILTERS, useFilters } from "@/app/contexts/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";
 import EmptyState from "@/components/Products/EmptyState";
-
-export const dynamic = "force-dynamic";
 
 export default function Home() {
   const { products, debouncedRefetch, filter, setFilter } = useFilters(); // Get global products, filter, and refetch

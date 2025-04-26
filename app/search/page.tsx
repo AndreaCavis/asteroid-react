@@ -3,7 +3,7 @@
 import Searchbar from "@/components/Searchbar";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { RESET_FILTERS, useFilters } from "@/components/FiltersContext";
+import { RESET_FILTERS, useFilters } from "@/app/contexts/FiltersContext";
 import ProductCard from "@/components/Products/ProductCard";
 import EmptyState from "@/components/Products/EmptyState";
 import ProductCardSkeleton from "@/components/Products/ProductCardSkeleton";

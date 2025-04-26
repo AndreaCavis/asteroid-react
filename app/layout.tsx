@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { FiltersProvider } from "@/components/FiltersContext";
+import { FiltersProvider } from "@/app/contexts/FiltersContext";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 
