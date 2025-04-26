@@ -106,6 +106,7 @@ export const FiltersProvider = ({ children }: { children: ReactNode }) => {
             price: filter.price.range,
             brand: filter.brand,
           },
+
           searchQuery: pathname === "/search" ? searchQuery : null, // Only send search query if on search page
         }),
       });
