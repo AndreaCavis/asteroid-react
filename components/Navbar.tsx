@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     // semi-transparent nav-bar: bg-gradient-to-b from-black via-black/90 to-black/70
     <nav
-      className="navbar max-h-24 backdrop-blur-sm transition-all duration-200
-                  bg-gradient-to-r from-black/0 via-black/80 to-black/90
-                  hover:bg-black/90"
+      className="navbar max-h-24 backdrop-blur-3xl transition-all duration-200
+                  bg-gradient-to-r from-sky-300/0 via-sky-300/0 to-sky-300/0
+                  hover:bg-black/50"
     >
       <Link href={"/"}>
         <img
@@ -14,7 +14,7 @@ const Navbar = () => {
           alt={"Asteroid logo"}
           width={334}
           height={100}
-          className="z-50 w-1/6 h-auto m-2 inline-block transition-all duration-50 hover:animate-pulse hover:duration-1000"
+          className="z-50 w-1/6 h-auto m-2 inline-block transition-all hover:animate-pulse hover:duration-1000"
         />
       </Link>
     </nav>

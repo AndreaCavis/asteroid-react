@@ -27,6 +27,7 @@ export default function Home() {
           Find the{" "}
           <span
             className="group text-primary transition-colors duration-300
+            hover:animate-pulse hover:duration-75
                            group-hover:text-bluesky group-hover:opacity-80"
           >
             supplements
