@@ -22,7 +22,7 @@ const Searchbar = () => {
       try {
         const response = await fetch("/api/query?search=");
         const data = await response.json();
-        setAllProductNames(data.map((product: any) => product.name)); // Store names only
+        setAllProductNames(data.map((product: Record<string, any>) => product.name)); // Store names only
       } catch (error) {
         console.error("Error fetching products:", error);
       }
