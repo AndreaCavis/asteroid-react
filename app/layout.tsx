@@ -21,7 +21,6 @@ export default function RootLayout({
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
       </head>
       <body className="min-h-screen flex flex-col">
-        <title>Asteroid</title>
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
           <FiltersProvider>
