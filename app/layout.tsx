@@ -8,6 +8,9 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Asteroid",
   description: "Find the supplements you're looking for",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -17,9 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <head>
+      {/* <head>
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-      </head>
+      </head> */}
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
