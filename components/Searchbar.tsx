@@ -154,7 +154,7 @@ const Searchbar = () => {
             }}
           />
           <button
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full
+            className="absolute top-0 right-0 h-full flex items-center justify-center px-3 rounded-full
                        transition-all duration-300 
                        text-2xl text-primary opacity-75 
                        hover:opacity-100 hover:text-bluesky"
