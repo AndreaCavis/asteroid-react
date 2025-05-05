@@ -20,9 +20,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      {/* <head>
-        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-      </head> */}
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
