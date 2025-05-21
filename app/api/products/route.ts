@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
     // Create Collection<Products> for TypeScript safety
     const productsCollection = db.collection("products") as Collection<Product>;
     // Fetch filtered & sorted products from MongoDB
-    const products = await productsCollection.find(filter).sort(sortOption).limit(25).toArray();
+    const products = await productsCollection.find(filter).sort(sortOption).limit(100).toArray();
 
     return new Response(JSON.stringify(products), {
       status: 200,
