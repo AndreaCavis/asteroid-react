@@ -113,13 +113,20 @@ Import trace:
     ./app/globals.css [Client Component Browser]
     ./app/layout.tsx [Server Component]
 ---------------------------------------------------------------
-// Since it's been 1 year since the last update, this bulk update caused some "ecosystem-braking" migrations (like tailwind 3 -> 4 or TypeScript 5 -> 6), in order to stabilise the project downgrade to an earlier update and then, when the app is working, you can complete the big migrations step by step. SO:
 
-Install previous Tailwind and Typescript version at the same time:
+'''
+Since it's been 1 year since the last update, this bulk update caused some "ecosystem-braking" migrations (like tailwind 3 -> 4 or TypeScript 5 -> 6), in order to stabilise the project downgrade to an earlier update and then, when the app is working, you can complete the big migrations step by step. SO:
+
+Install previous Tailwind and Typescript version:
 
 npm install tailwindcss@3.4.17 typescript@5.7.3
 
-else, you can do it one by one by typing:
+OR, since I created a branch for this, I can simply create a new branch where I can restart the process correctly. 
+ALTERNATIVELY, I could try the command 
 
-npm install -D tailwindcss@3.4.17
-npm install -D typescript@5.7.3
+git stash
+
+"Use git stash when you want to record the current state of the working directory and the index, but want to go back to a clean working directory. The command saves your local modifications away and reverts the working directory to match the HEAD commit." ( https://git-scm.com/docs/git-stash )
+'''
+
+git stash
