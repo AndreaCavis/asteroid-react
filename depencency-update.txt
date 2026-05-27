@@ -1,0 +1,24 @@
+DEPENDENCY UPDATE:
+
+git checkout -b "CHORE/dependency-updates"
+
+npm outdated
+
+PS C:\Users\andre\Documents\GitHub\asteroid-react> npm outdated
+Package                        Current   Wanted  Latest  Location  Depended by
+@radix-ui/react-accordion      MISSING   1.2.12  1.2.12  -         asteroid-react
+@radix-ui/react-dropdown-menu  MISSING   2.1.16  2.1.16  -         asteroid-react
+@radix-ui/react-slider         MISSING    1.3.6   1.3.6  -         asteroid-react
+class-variance-authority       MISSING    0.7.1   0.7.1  -         asteroid-react
+clsx                           MISSING    2.1.1   2.1.1  -         asteroid-react
+lucide-react                   MISSING  0.479.0  1.16.0  -         asteroid-react
+mongodb                        MISSING   6.21.0   7.2.0  -         asteroid-react
+next                           MISSING  15.5.18  16.2.6  -         asteroid-react
+react                          MISSING   19.2.6  19.2.6  -         asteroid-react
+react-dom                      MISSING   19.2.6  19.2.6  -         asteroid-react
+react-icons                    MISSING    5.6.0   5.6.0  -         asteroid-react
+tailwind-merge                 MISSING    3.6.0   3.6.0  -         asteroid-react
+tailwindcss-animate            MISSING    1.0.7   1.0.7  -         asteroid-react
+use-debounce                   MISSING   10.1.1  10.1.1  -         asteroid-react
+zod                            MISSING  3.25.76   4.4.3  -         asteroid-react
+---------------------------------------------------------------
