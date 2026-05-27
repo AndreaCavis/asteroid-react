@@ -138,3 +138,9 @@ Saved working directory and index state WIP on CHORE/dependency-updates: 4a529c6
 ---------------------------------------------------------------
 
 RESTART CYCLE HERE
+
+npx npm-check-updates -u installs all updates, to reject some updates run
+
+npx npm-check-updates -u --reject typescript,tailwindcss
+
+respect syntax, particularly for commas or it won't work as intended
