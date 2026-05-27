@@ -113,3 +113,13 @@ Import trace:
     ./app/globals.css [Client Component Browser]
     ./app/layout.tsx [Server Component]
 ---------------------------------------------------------------
+// Since it's been 1 year since the last update, this bulk update caused some "ecosystem-braking" migrations (like tailwind 3 -> 4 or TypeScript 5 -> 6), in order to stabilise the project downgrade to an earlier update and then, when the app is working, you can complete the big migrations step by step. SO:
+
+Install previous Tailwind and Typescript version at the same time:
+
+npm install tailwindcss@3.4.17 typescript@5.7.3
+
+else, you can do it one by one by typing:
+
+npm install -D tailwindcss@3.4.17
+npm install -D typescript@5.7.3
