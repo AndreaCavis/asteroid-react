@@ -130,3 +130,11 @@ git stash
 '''
 
 git stash
+
+warning: in the working copy of 'tsconfig.json', LF will be replaced by CRLF the next time Git touches it
+Saved working directory and index state WIP on CHORE/dependency-updates: 4a529c6 Committing not to have it stashed
+
+// No problem, move on
+---------------------------------------------------------------
+
+RESTART CYCLE HERE
