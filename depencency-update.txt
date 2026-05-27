@@ -54,3 +54,41 @@ Upgrading C:\Users\andre\Documents\GitHub\asteroid-react\package.json
 
 Run npm install to install new versions.
 ---------------------------------------------------------------
+
+
+npm install
+
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: @typescript-eslint/typescript-estree@8.22.0
+npm warn Found: typescript@6.0.3
+npm warn node_modules/typescript
+npm warn   dev typescript@"^6" from the root project
+npm warn   2 more (ts-api-utils, eslint-config-next)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer typescript@">=4.8.4 <5.8.0" from @typescript-eslint/typescript-estree@8.22.0
+npm warn node_modules/@typescript-eslint/typescript-estree
+npm warn
+npm warn Conflicting peer dependency: typescript@5.7.3
+npm warn node_modules/typescript
+npm warn   peer typescript@">=4.8.4 <5.8.0" from @typescript-eslint/typescript-estree@8.22.0
+npm warn   node_modules/@typescript-eslint/typescript-estree
+npm warn ERESOLVE overriding peer dependency
+npm warn ERESOLVE overriding peer dependency
+npm warn ERESOLVE overriding peer dependency
+
+added 410 packages, and audited 411 packages in 2m
+
+141 packages are looking for funding
+  run `npm fund` for details
+
+7 vulnerabilities (4 moderate, 3 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+---------------------------------------------------------------
