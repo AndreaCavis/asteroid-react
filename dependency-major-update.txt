@@ -1,0 +1,38 @@
+DEPENDENCY UPDATE:
+
+npm outdated
+
+Package           Current   Wanted   Latest  Location                       Depended by
+@eslint/eslintrc    3.2.0    3.3.5    3.3.5  node_modules/@eslint/eslintrc  asteroid-react
+@types/react       19.0.8  19.2.15  19.2.15  node_modules/@types/react      asteroid-react
+@types/react-dom   19.0.3   19.2.3   19.2.3  node_modules/@types/react-dom  asteroid-react
+postcss             8.5.1   8.5.15   8.5.15  node_modules/postcss           asteroid-react
+tailwindcss        3.4.17   3.4.19    4.3.0  node_modules/tailwindcss       asteroid-react
+typescript          5.7.3    5.9.3    6.0.3  node_modules/typescript        asteroid-react
+---------------------------------------------------------------
+
+
+npm update 
+
+npm warn ERESOLVE overriding peer dependency
+npm warn ERESOLVE overriding peer dependency
+npm warn ERESOLVE overriding peer dependency
+
+added 8 packages, removed 46 packages, changed 37 packages, and audited 443 packages in 57s
+
+147 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+---------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------
