@@ -39,6 +39,7 @@ tailwindcss   3.4.19  3.4.19   4.3.0  node_modules/tailwindcss  asteroid-react
 typescript     5.9.3   5.9.3   6.0.3  node_modules/typescript   asteroid-react
 ---------------------------------------------------------------
 
+
 TAILWIND:
 Before upgrading, I went and checked the official documentation for this migration as several things will change from v3 to v4.
 Details of the change can be found here:
@@ -50,6 +51,7 @@ https://tailwindcss.com/docs/upgrade-guide#changes-from-v3
 the following code comes from the first URL as the recommended command to upgrade from v3 to v4 automatically.
 If some bugs are left they can be handled manually.
 ---------------------------------------------------------------
+
 
 npx @tailwindcss/upgrade
 
@@ -64,4 +66,13 @@ Ok to proceed? (y) y
 │ You may use the `--force` flag to silence this warning and perform the migration.
 
 Interesting. I'll double check the current updates are stable, then I'll commit them and then I'll upgrade tailwind.
+
+DOUBLE CHECK:
+npm run dev works as intended. I'll commit all the changes and retry npx @tailwindcss/upgrade
+---------------------------------------------------------------
+
+
+npx @tailwindcss/upgrade
+
+// code result
 ---------------------------------------------------------------
