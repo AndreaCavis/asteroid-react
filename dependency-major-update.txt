@@ -65,8 +65,8 @@ Ok to proceed? (y) y
 
 │ You may use the `--force` flag to silence this warning and perform the migration.
 
-Interesting. I'll double check the current updates are stable, then I'll commit them and then I'll upgrade tailwind.
 
+Interesting. I'll double check the current updates are stable, then I'll commit them and then I'll upgrade tailwind.
 DOUBLE CHECK:
 npm run dev works as intended. I'll commit all the changes and retry npx @tailwindcss/upgrade
 ---------------------------------------------------------------
@@ -74,5 +74,59 @@ npm run dev works as intended. I'll commit all the changes and retry npx @tailwi
 
 npx @tailwindcss/upgrade
 
-// code result
+PS C:\Users\andre\Documents\GitHub\asteroid-react> npx @tailwindcss/upgrade
+≈ tailwindcss v4.3.0
+
+│ ↳ Upgrading from Tailwind CSS `v3.4.19` 
+
+│ Searching for CSS files in the current directory and its subdirectories… 
+
+│ ↳ Linked `.\tailwind.config.ts` to `.\app\globals.css` 
+
+│ Migrating JavaScript configuration files… 
+
+(node:37404) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/andre/Documents/GitHub/asteroid-react/tailwind.config.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\andre\Documents\GitHub\asteroid-react\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+│ ↳ Migrated configuration file: `.\tailwind.config.ts` 
+
+│ Migrating stylesheets… 
+
+│ ↳ Migrated stylesheet: `.\app\globals.css` 
+
+│ Updating dependencies… 
+
+│ ↳ Updated package: `tailwindcss` 
+
+│ Migrating templates… 
+
+│ ↳ Migrated `.\components\Sidebar.tsx` 
+
+│ ↳ Migrated `.\app\layout.tsx` 
+
+│ ↳ Migrated `.\components\Navbar.tsx` 
+
+│ ↳ Migrated `.\components\Products\ProductCard.tsx` 
+
+│ ↳ Migrated `.\components\ui\slider.tsx` 
+
+│ ↳ Migrated `.\components\ui\dropdown-menu.tsx` 
+
+│ ↳ Migrated `.\components\Products\ProductDetails.tsx` 
+
+│ ↳ Migrated templates for configuration file: `.\tailwind.config.ts` (7 files changed) 
+
+│ Migrating PostCSS configuration… 
+
+│ ↳ Installed package: `@tailwindcss/postcss` 
+
+│ ↳ Migrated PostCSS configuration: `.\postcss.config.mjs` 
+
+│ Verify the changes and commit them to your repository. 
+
+
+Ok, so the update went smoothly but some tailwind designs broke, I'll have to fix them before merging into main. Should I commit this update?
+Yes, I will. However I'll open a dedicated branch to tailwindcss v4 
+"CHORE/tailwind-v4-design"
 ---------------------------------------------------------------
