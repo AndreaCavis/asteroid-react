@@ -32,7 +32,36 @@ Run `npm audit` for details.
 ---------------------------------------------------------------
 
 
+npm outdated
 
+Package      Current  Wanted  Latest  Location                  Depended by
+tailwindcss   3.4.19  3.4.19   4.3.0  node_modules/tailwindcss  asteroid-react
+typescript     5.9.3   5.9.3   6.0.3  node_modules/typescript   asteroid-react
+---------------------------------------------------------------
 
+TAILWIND:
+Before upgrading, I went and checked the official documentation for this migration as several things will change from v3 to v4.
+Details of the change can be found here:
 
+https://tailwindcss.com/docs/upgrade-guide
+
+https://tailwindcss.com/docs/upgrade-guide#changes-from-v3
+
+the following code comes from the first URL as the recommended command to upgrade from v3 to v4 automatically.
+If some bugs are left they can be handled manually.
+---------------------------------------------------------------
+
+npx @tailwindcss/upgrade
+
+PS C:\Users\andre\Documents\GitHub\asteroid-react> npx @tailwindcss/upgrade                                                   
+Need to install the following packages:
+@tailwindcss/upgrade@4.3.0
+Ok to proceed? (y) y
+≈ tailwindcss v4.3.0
+
+│ Git directory is not clean. Please stash or commit your changes before migrating. 
+
+│ You may use the `--force` flag to silence this warning and perform the migration.
+
+Interesting. I'll double check the current updates are stable, then I'll commit them and then I'll upgrade tailwind.
 ---------------------------------------------------------------
