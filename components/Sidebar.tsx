@@ -76,7 +76,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-bluesky-light"
+                               hover:peer-checked:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -114,7 +114,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-bluesky-light"
+                               hover:peer-checked:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -152,7 +152,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-bluesky-light"
+                               hover:peer-checked:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -199,7 +199,7 @@ const Sidebar = () => {
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                                transition-all duration-100
                                peer-hover:text-accent-foreground peer-checked:text-accent-foreground 
-                               peer-checked:hover:text-bluesky-light"
+                               hover:peer-checked:text-bluesky-light"
                   >
                     {option.label}
                   </label>
@@ -228,7 +228,7 @@ const Sidebar = () => {
                     htmlFor={`price-${PRICE_FILTERS.options.length}`}
                     className="ml-3 lg:text-base md:text-sm sm:text-xs text-xs text-stone-400
                     transition-all duration-100
-                    peer-hover:text-accent-foreground peer-checked:hover:text-sky-500 
+                    peer-hover:text-accent-foreground hover:peer-checked:text-sky-500 
                     peer-checked:text-bluesky-light"
                   >
                     Custom

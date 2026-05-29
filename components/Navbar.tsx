@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav
       className="navbar max-h-24 backdrop-blur-3xl transition-colors duration-200
-                  bg-gradient-to-r from-sky-300/0 via-sky-300/0 to-sky-300/0
+                  bg-linear-to-r from-sky-300/0 via-sky-300/0 to-sky-300/0
                   hover:bg-black/50"
     >
       <Link href={"/"}>

@@ -26,7 +26,7 @@ export default function RootLayout({
           <FiltersProvider>
             <div className="flex flex-1 items-stretch lg:pt-24 md:pt-20 sm:pt-16 pt-12">
               <Sidebar />
-              <div className="flex-grow">{children}</div>
+              <div className="grow">{children}</div>
             </div>
           </FiltersProvider>
         </Suspense>

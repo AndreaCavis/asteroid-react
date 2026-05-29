@@ -27,13 +27,13 @@ const ProductDetails = ({ product }: { product: Product }) => {
           className="flex scale-90 hover:scale-95 transition-all duration-300
                      lg:w-1/2 w-full justify-center"
         >
-          <div className="rounded-lg bg-gradient-to-tr from-stone-100/90 via-stone-600/70 to-stone-950">
+          <div className="rounded-lg bg-linear-to-tr from-stone-100/90 via-stone-600/70 to-stone-950">
             <img
               src={"/" + product.imageUrl}
               alt={product.name + " image"}
               className="flex w-full lg:max-w-md md:max-w-xs sm:max-w-72 h-[400px]
                        rounded-lg opacity-50 transition-all duration-300 ease justify-center align-middle
-                       bg-gradient-to-tr from-stone-100/90 via-stone-600/70 to-stone-950
+                       bg-linear-to-tr from-stone-100/90 via-stone-600/70 to-stone-950
                        hover:rounded-md hover:opacity-60"
               width={50}
               height={50}
